@@ -104,6 +104,12 @@ namespace SalesAndDealsAPI.Controllers
             return _context.Scrapdevs.Any(e => e.Id == id);
         }
 
+        [HttpGet("FindScraper/{username}")]
+        public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> FindScraper(string username)
+        {
+            return await _context.Scrapdevs.Where(s => s.Username.Equals(username)).ToListAsync();
+        }
+
 
     }
 }
