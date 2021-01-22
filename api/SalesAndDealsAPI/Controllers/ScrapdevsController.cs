@@ -13,9 +13,9 @@ namespace SalesAndDealsAPI.Controllers
     [ApiController]
     public class ScrapdevsController : ControllerBase
     {
-        private readonly ScrapdevContext _context;
+        private readonly SnDContext _context;
 
-        public ScrapdevsController(ScrapdevContext context)
+        public ScrapdevsController(SnDContext context)
         {
             _context = context;
         }

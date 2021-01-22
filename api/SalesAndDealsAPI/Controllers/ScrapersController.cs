@@ -13,9 +13,9 @@ namespace SalesAndDealsAPI.Controllers
     [ApiController]
     public class ScrapersController : ControllerBase
     {
-        private readonly ScraperContext _context;
+        private readonly SnDContext _context;
 
-        public ScrapersController(ScraperContext context)
+        public ScrapersController(SnDContext context)
         {
             _context = context;
         }

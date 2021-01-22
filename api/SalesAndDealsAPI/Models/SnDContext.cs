@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SalesAndDealsAPI.Models
 {
-    public class ScrapdevContext : DbContext
+    public class SnDContext : DbContext
     {
-        public ScrapdevContext(DbContextOptions<ScrapdevContext> options) : base(options)
+        public SnDContext(DbContextOptions<SnDContext> options) : base(options)
         {
         }
 
         public DbSet<ScrapdevDTO> Scrapdevs { get; set; }
+        public DbSet<Scraper> Scrapers { get; set; }
     }
+
 }
