@@ -1,0 +1,11 @@
+.container {
+    position: relative;
+    justify-content: center;
+    top: 15%;
+    height: auto;
+    p {
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+    }
+}
