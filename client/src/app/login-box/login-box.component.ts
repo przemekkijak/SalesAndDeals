@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginBoxComponent implements OnInit {
 
+  user = {
+    name: "Przemek",
+  }
   constructor() { }
 
   ngOnInit(): void {

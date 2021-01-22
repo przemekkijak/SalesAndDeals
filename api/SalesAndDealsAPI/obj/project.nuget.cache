@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HYy/3Psd83AOAKqw2LGHRhktNoX6tODmYVk4yi01k4Q4dtTAX1qN+pB+3rUs9uETio6qo/yIN2Gs9OyMeJ0+OQ==",
+  "dgSpecHash": "2t/I+DGrQPXEiki1hYH5gZ3Sg7XmZjN2ixVkWWlgTp05YYlfFfsotgoiFINZuDAogYONmI+RgzbXFjeZoyoinQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
+  "projectFilePath": "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kijak\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kijak\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

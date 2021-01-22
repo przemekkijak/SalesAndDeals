@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj": {}
+    "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj": {
+    "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
+        "projectUniqueName": "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
         "projectName": "SalesAndDealsAPI",
-        "projectPath": "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
+        "projectPath": "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\SalesAndDealsAPI.csproj",
         "packagesPath": "C:\\Users\\kijak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kijak\\source\\repos\\SalesAndDealsAPI\\SalesAndDealsAPI\\obj\\",
+        "outputPath": "C:\\dev\\SalesAndDeals\\api\\SalesAndDealsAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kijak\\AppData\\Roaming\\NuGet\\NuGet.Config",
