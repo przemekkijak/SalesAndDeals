@@ -42,7 +42,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // PUT: api/Scrapers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutScraper(int id, Scraper scraper)
         {
@@ -73,7 +72,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // POST: api/Scrapers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Scraper>> PostScraper(Scraper scraper)
         {
@@ -112,5 +110,7 @@ namespace SalesAndDealsAPI.Controllers
             return await _context.Scrapers.Where(s => s.CreatedByName.Equals(name))
                 .ToListAsync();
         }
+
+        //[HttpGet("multiTest/")]
     }
 }

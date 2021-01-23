@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SalesAndDealsAPI.Models;
+using DotNetEnv;
 
 namespace SalesAndDealsAPI
 {
@@ -28,10 +29,10 @@ namespace SalesAndDealsAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            DotNetEnv.Env.Load();
             services.AddControllers();
             services.AddDbContextPool<SnDContext>(options => options.UseMySql(
-                "server=localhost;port=3306;database=salesanddeals;uid=root;password=SalesPass!",
+                $"server={DotNetEnv.Env.GetString("DBHOST")};port={DotNetEnv.Env.GetString("DBPORT")};database={DotNetEnv.Env.GetString("DBNAME")};uid={DotNetEnv.Env.GetString("DBLOGIN")};password={DotNetEnv.Env.GetString("DBPASS")}",
                 new MySqlServerVersion(new Version(8, 0, 21)),
                 mySqlOptions => mySqlOptions
                 .CharSetBehavior(Pomelo.EntityFrameworkCore.MySql.Infrastructure.CharSetBehavior.NeverAppend))
