@@ -101,16 +101,5 @@ namespace SalesAndDealsAPI.Controllers
         {
             return _context.Scrapers.Any(e => e.ID == id);
         }
-
-
-        //custom api request
-        [HttpGet("GetForScrapdev/{name}")]
-        public async Task<ActionResult<IEnumerable<Scraper>>> GetByNames(string name)
-        {
-            return await _context.Scrapers.Where(s => s.CreatedByName.Equals(name))
-                .ToListAsync();
-        }
-
-        //[HttpGet("multiTest/")]
     }
 }

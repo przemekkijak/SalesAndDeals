@@ -42,7 +42,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // PUT: api/Scrapdevs/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutScrapdev(int id, Scrapdev scrapdev)
         {
@@ -73,7 +72,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // POST: api/Scrapdevs
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(ScrapdevDTO scrapdev)
         {
@@ -104,12 +102,13 @@ namespace SalesAndDealsAPI.Controllers
             return _context.Scrapdevs.Any(e => e.Id == id);
         }
 
-        [HttpGet("FindScraper/{username}")]
-        public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> FindScraper(string username)
+        [HttpGet("createdScrapers/{username}")]
+        public async Task<ActionResult<ScrapDetails>> UserScrapsCounter(string Username)
         {
-            return await _context.Scrapdevs.Where(s => s.Username.Equals(username)).ToListAsync();
+            var dev = await _context.Scrapdevs.Where(s => s.Username.Equals(Username)).FirstAsync();
+            var counter = await _context.Scrapers.Where(s => s.CreatedByName.Equals(Username)).CountAsync();
+            return new ScrapDetails(dev, counter);
         }
-
 
     }
 }
