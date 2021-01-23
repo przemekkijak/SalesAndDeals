@@ -60,9 +60,9 @@ namespace SalesAndDealsAPI.Controllers
             }
         }
 
-        public async Task<Scrapdev> GetUser(string username, string password)
+        public async Task<User> GetUser(string username, string password)
         {
-            return await _context.Scrapdevs.FirstOrDefaultAsync(u => u.Username.Equals(username) && u.Password.Equals(password));
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username.Equals(username) && u.Password.Equals(password));
         }
 
 

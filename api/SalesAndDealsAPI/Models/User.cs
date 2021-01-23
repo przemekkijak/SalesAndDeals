@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SalesAndDealsAPI.Models
 {
-    public class Scrapdev
+    public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }

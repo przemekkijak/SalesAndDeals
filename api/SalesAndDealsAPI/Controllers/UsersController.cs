@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesAndDealsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace SalesAndDealsAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class ScrapdevsController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly SnDContext _context;
 
-        public ScrapdevsController(SnDContext context)
+        public UsersController(SnDContext context)
         {
             _context = context;
         }
@@ -24,14 +27,14 @@ namespace SalesAndDealsAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> GetScrapdevs()
         {
-            return await _context.Scrapdevs.Select(s => new ScrapdevDTO(s.Id, s.Username, s.Role)).ToListAsync();
+            return await _context.Users.Select(s => new ScrapdevDTO(s.Id, s.Username, s.Role)).ToListAsync();
         }
 
         // GET: api/Scrapdevs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Scrapdev>> GetScrapdev(int id)
+        public async Task<ActionResult<User>> GetScrapdev(int id)
         {
-            var scrapdev = await _context.Scrapdevs.FindAsync(id);
+            var scrapdev = await _context.Users.FindAsync(id);
 
             if (scrapdev == null)
             {
@@ -44,33 +47,18 @@ namespace SalesAndDealsAPI.Controllers
 
         // POST: api/Scrapdevs
         [HttpPost]
-        public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(Scrapdev scrapdev)
+        public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(User scrapdev)
         {
-            _context.Scrapdevs.Add(scrapdev);
+            _context.Users.Add(scrapdev);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetScrapdev", new { id = scrapdev.Id }, scrapdev);
         }
 
-        // DELETE: api/Scrapdevs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteScrapdev(int id)
-        {
-            var scrapdev = await _context.Scrapdevs.FindAsync(id);
-            if (scrapdev == null)
-            {
-                return NotFound();
-            }
-
-            _context.Scrapdevs.Remove(scrapdev);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
 
         private bool ScrapdevExists(int id)
         {
-            return _context.Scrapdevs.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
 
         //custom endpoints, for learning
@@ -78,7 +66,7 @@ namespace SalesAndDealsAPI.Controllers
         [HttpGet("createdScrapers/{username}")]
         public async Task<ActionResult<ScrapDetails>> UserScrapsCounter(string Username)
         {
-            var dev = await _context.Scrapdevs.Where(s => s.Username.Equals(Username)).FirstAsync();
+            var dev = await _context.Users.Where(s => s.Username.Equals(Username)).FirstAsync();
             var counter = await _context.Scrapers.Where(s => s.CreatedByName.Equals(Username)).CountAsync();
             return new ScrapDetails(dev, counter);
         }
