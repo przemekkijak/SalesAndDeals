@@ -22,9 +22,9 @@ namespace SalesAndDealsAPI.Controllers
 
         // GET: api/Scrapdevs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Scrapdev>>> GetScrapdevs()
+        public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> GetScrapdevs()
         {
-            return await _context.Scrapdevs.ToListAsync();
+            return await _context.Scrapdevs.Select(s => new ScrapdevDTO(s.Id, s.Username, s.Role)).ToListAsync();
         }
 
         // GET: api/Scrapdevs/5
@@ -41,35 +41,6 @@ namespace SalesAndDealsAPI.Controllers
             return scrapdev;
         }
 
-        // PUT: api/Scrapdevs/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutScrapdev(int id, Scrapdev scrapdev)
-        {
-            if (id != scrapdev.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(scrapdev).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ScrapdevExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
 
         // POST: api/Scrapdevs
         [HttpPost]

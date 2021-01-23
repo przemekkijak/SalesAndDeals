@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesAndDealsAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SalesAndDealsAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ScrapersController : ControllerBase
