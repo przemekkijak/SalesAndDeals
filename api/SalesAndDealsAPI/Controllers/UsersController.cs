@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using SalesAndDealsAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 
-
 namespace SalesAndDealsAPI.Controllers
 {
     [Authorize]
@@ -23,53 +22,69 @@ namespace SalesAndDealsAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Scrapdevs
+        // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> GetScrapdevs()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.Select(s => new ScrapdevDTO(s.Id, s.Username, s.Role)).ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Scrapdevs/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetScrapdev(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            var scrapdev = await _context.Users.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
-            if (scrapdev == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return scrapdev;
+            return user;
         }
 
-
-        // POST: api/Scrapdevs
-        [HttpPost]
-        public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(User scrapdev)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser(int id, User user)
         {
-            _context.Users.Add(scrapdev);
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(User user)
+        {
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetScrapdev", new { id = scrapdev.Id }, scrapdev);
+            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-
-        private bool ScrapdevExists(int id)
+        private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
         }
-
-        //custom endpoints, for learning
-
-        [HttpGet("createdScrapers/{username}")]
-        public async Task<ActionResult<ScrapDetails>> UserScrapsCounter(string Username)
-        {
-            var dev = await _context.Users.Where(s => s.Username.Equals(Username)).FirstAsync();
-            var counter = await _context.Scrapers.Where(s => s.CreatedByName.Equals(Username)).CountAsync();
-            return new ScrapDetails(dev, counter);
-        }
-
     }
+
 }
