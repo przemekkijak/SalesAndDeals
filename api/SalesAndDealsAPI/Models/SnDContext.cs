@@ -10,7 +10,7 @@ namespace SalesAndDealsAPI.Models
         {
         }
 
-        public DbSet<ScrapdevDTO> Scrapdevs { get; set; }
+        public DbSet<Scrapdev> Scrapdevs { get; set; }
         public DbSet<Scraper> Scrapers { get; set; }
 
     }

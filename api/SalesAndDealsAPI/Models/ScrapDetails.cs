@@ -7,10 +7,10 @@ namespace SalesAndDealsAPI.Models
 {
     public class ScrapDetails
     {
-        public ScrapdevDTO DevDetails { get; set; }
+        public Scrapdev DevDetails { get; set; }
         public int ScrapersMadeCounter { get; set; }
 
-        public ScrapDetails(ScrapdevDTO dev, int counter)
+        public ScrapDetails(Scrapdev dev, int counter)
         {
             this.DevDetails = dev;
             this.ScrapersMadeCounter = counter;

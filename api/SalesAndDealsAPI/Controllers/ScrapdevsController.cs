@@ -22,14 +22,14 @@ namespace SalesAndDealsAPI.Controllers
 
         // GET: api/Scrapdevs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ScrapdevDTO>>> GetScrapdevs()
+        public async Task<ActionResult<IEnumerable<Scrapdev>>> GetScrapdevs()
         {
             return await _context.Scrapdevs.ToListAsync();
         }
 
         // GET: api/Scrapdevs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ScrapdevDTO>> GetScrapdev(int id)
+        public async Task<ActionResult<Scrapdev>> GetScrapdev(int id)
         {
             var scrapdev = await _context.Scrapdevs.FindAsync(id);
 
@@ -73,7 +73,7 @@ namespace SalesAndDealsAPI.Controllers
 
         // POST: api/Scrapdevs
         [HttpPost]
-        public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(ScrapdevDTO scrapdev)
+        public async Task<ActionResult<ScrapdevDTO>> PostScrapdev(Scrapdev scrapdev)
         {
             _context.Scrapdevs.Add(scrapdev);
             await _context.SaveChangesAsync();
@@ -101,6 +101,8 @@ namespace SalesAndDealsAPI.Controllers
         {
             return _context.Scrapdevs.Any(e => e.Id == id);
         }
+
+        //custom endpoints, for learning
 
         [HttpGet("createdScrapers/{username}")]
         public async Task<ActionResult<ScrapDetails>> UserScrapsCounter(string Username)
