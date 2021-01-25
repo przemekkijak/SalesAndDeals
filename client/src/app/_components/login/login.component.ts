@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     const username = target.querySelector('#login').value;
     const password = target.querySelector('#password').value
     this.Account.login(username, password);
-    
   }
 
 }

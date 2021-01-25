@@ -5,19 +5,27 @@
     display: grid;
     grid-template-columns: 10% 90%;
     width: 100%;
-}
-
-.app {
     #topBanner {
-        display: flex;
+        position: relative;
         height: 3.5%;
-        width: 100%;
+        width: 100vw;
+        top: 0%;
+        left: 0%;
         background-color: #626C66;
         align-items: center;
         align-content: center;
         span {
+            display: flex;
+            padding-top: 5px;
             margin-left: 1%;
             color: white;
         }
     }
+    .app {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
 }
+

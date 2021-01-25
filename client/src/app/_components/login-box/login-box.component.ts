@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router';
 import {AccountService} from '../../_services/account.service';
 
 @Component({
@@ -10,9 +10,18 @@ import {AccountService} from '../../_services/account.service';
 export class LoginBoxComponent implements OnInit {
 
   username = this.user.username;
-  constructor(private user: AccountService) { }
+  constructor(
+    private user: AccountService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    localStorage.removeItem('sndData');
+    location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

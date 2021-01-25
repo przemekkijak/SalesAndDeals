@@ -7,12 +7,20 @@ import { map } from 'rxjs/operators';
 
 import {User} from '../_models/user';
 
+interface ISUser {
+  id:      number;
+  username:     string;
+  role:      string;
+  token: string;
+}
+
 @Injectable({providedIn: 'root'})
 export class AccountService {
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
 
 
+  
   constructor(
     private router: Router,
     private http: HttpClient
@@ -30,15 +38,23 @@ export class AccountService {
    }
 
    login(username: string, password: string) {
-    this.http.post('/api/login', {username, password})
-    .subscribe({
-      next: data => {
-        localStorage.setItem('sndData', JSON.stringify(data));
-        this.router.navigate(['/']);
-      },
-      error: error => {
-        console.log(error);
-      }
-    })
+    return this.http.post('/api/login', {username, password})
+    .pipe(map(user => {
+      localStorage.setItem('sndData', JSON.stringify(user));
+      // this.userSubject.next(user);
+      return user;
+    }));
   };
 }
+
+// login(username: string, password: string) {
+//   return this.http.post('/api/login', {username, password})
+//   .subscribe({
+//     next: user => {
+//       localStorage.setItem('sndData', JSON.stringify(user));
+//       return user;
+//     },
+//     error: error => {
+//       return error;
+//     }
+//   });
