@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {AccountService} from '../../_services/account.service';
+
 @Component({
   selector: 'app-login-box',
   templateUrl: './login-box.component.html',
@@ -7,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginBoxComponent implements OnInit {
 
-  user = {
-    name: "Przemek",
-  }
-  constructor() { }
+  username = this.user.username;
+  constructor(private user: AccountService) { }
 
   ngOnInit(): void {
   }

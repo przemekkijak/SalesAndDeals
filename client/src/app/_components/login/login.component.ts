@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../auth.service';
+import {AccountService} from '../../_services/account.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import {AuthService} from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private Auth: AuthService) { }
+  constructor(private Account: AccountService) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +19,8 @@ export class LoginComponent implements OnInit {
     const target = event.target;
     const username = target.querySelector('#login').value;
     const password = target.querySelector('#password').value
-    console.log(username);
-    console.log(password);
-
-    this.Auth.getUserDetails(username, password);
+    this.Account.login(username, password);
+    
   }
-  
+
 }

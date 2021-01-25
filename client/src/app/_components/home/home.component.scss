@@ -1,0 +1,23 @@
+.container {
+    height: 100%;
+    width: 100%;
+    background: #F1F1F1;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    width: 100%;
+}
+
+.app {
+    #topBanner {
+        display: flex;
+        height: 3.5%;
+        width: 100%;
+        background-color: #626C66;
+        align-items: center;
+        align-content: center;
+        span {
+            margin-left: 1%;
+            color: white;
+        }
+    }
+}
