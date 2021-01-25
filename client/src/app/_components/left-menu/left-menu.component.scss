@@ -11,8 +11,24 @@
         flex-direction: column;
         justify-content: center;
         li {
+            a {
+                text-decoration: none !important;
+                color: #8a96a8;
+                cursor: pointer;
+                &:visited {
+                    text-decoration: none !important;
+                    color: #8a96a8;
+                }
+                &:hover {
+                    text-decoration: none !important;
+                    color: #8a96a8;
+                }
+                &:active {
+                    text-decoration: none !important;
+                    color: #3b3e42;
+                }
+            }
             padding: 7% 0% 7% 0%;
-            cursor: pointer;
             padding-left: 15%;
             color: #8a96a8;
             font-size: 1.1rem;
