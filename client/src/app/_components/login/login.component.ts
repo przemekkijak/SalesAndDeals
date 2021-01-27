@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AccountService} from '../../_services/account.service';
-
+import {AuthService} from '../../_services/auth.service';
+import {TokenStorageService} from '../../_services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +8,43 @@ import {AccountService} from '../../_services/account.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+form: any = {
+  username: null,
+  password: null
+};
 
-  constructor(private Account: AccountService) { }
+isLoggedIn = false;
+isLoginFailed = false;
+errorMessage = "";
+UID = 0;
+username = "";
+
+  constructor(private auth: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    if(this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+    }
   }
 
-  loginUser(event:any) {
-    event.preventDefault();
-    const target = event.target;
-    const username = target.querySelector('#login').value;
-    const password = target.querySelector('#password').value
-    this.Account.login(username, password);
+  onSubmit(): void {
+    const {username, password} = this.form;
+
+    this.auth.login(username, password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.Token);
+        this.tokenStorage.saveUser(data);
+
+        console.log(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        window.location.reload();
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    )
   }
 
 }
