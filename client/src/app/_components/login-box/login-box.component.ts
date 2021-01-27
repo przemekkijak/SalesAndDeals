@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AccountService} from '../../_services/account.service';
+import {TokenStorageService} from '../../_services/token-storage.service';
+
 
 @Component({
   selector: 'app-login-box',
@@ -9,19 +10,21 @@ import {AccountService} from '../../_services/account.service';
 })
 export class LoginBoxComponent implements OnInit {
 
-  username = this.user.username;
+  username = "";
   constructor(
-    private user: AccountService,
+    private tokenStorage: TokenStorageService,
     private router: Router
     ) { }
 
   ngOnInit(): void {
+    if(this.tokenStorage.getUser()) {
+      this.username = this.tokenStorage.getUser().username;
+    }
   }
 
   logout() {
-    localStorage.removeItem('sndData');
-    location.reload();
-    this.router.navigate(['/login']);
+    this.tokenStorage.signOut();
+    window.location.reload();
   }
 
 }

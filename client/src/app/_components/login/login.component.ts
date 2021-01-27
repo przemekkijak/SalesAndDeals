@@ -16,7 +16,6 @@ form: any = {
 isLoggedIn = false;
 isLoginFailed = false;
 errorMessage = "";
-UID = 0;
 username = "";
 
   constructor(private auth: AuthService, private tokenStorage: TokenStorageService) { }
@@ -24,6 +23,7 @@ username = "";
   ngOnInit(): void {
     if(this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.username = this.tokenStorage.getUser().username;
     }
   }
 
@@ -32,10 +32,9 @@ username = "";
 
     this.auth.login(username, password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.Token);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
-
-        console.log(data);
+        this.username = data.username;
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         window.location.reload();
