@@ -7,8 +7,8 @@
         <li><a routerLink="/">Shop requests</a></li>
         <li><a routerLink="/">Scrapers</a></li>
         <li><a routerLink="/">Scraping</a></li>
-        <li><a routerLink="/login">Login</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
     </ul>
 
-    <app-login-box></app-login-box>
+    <app-login-box *ngIf="isLoggedIn"></app-login-box>
 </div>

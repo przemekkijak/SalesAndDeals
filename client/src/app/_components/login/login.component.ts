@@ -38,7 +38,10 @@ username = "";
         this.username = data.username;
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboards'])
+        .then(() => {
+          window.location.reload();
+        })
       },
       err => {
         this.errorMessage = err.error.message;
