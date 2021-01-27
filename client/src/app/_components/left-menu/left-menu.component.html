@@ -1,13 +1,13 @@
 <div class="container">
     <ul class="menuList">
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/test">Shops</a></li>
-        <li><a routerLink="/">Categories</a></li>
-        <li><a routerLink="/">TOP 10</a></li>
-        <li><a routerLink="/">Shop requests</a></li>
-        <li><a routerLink="/">Scrapers</a></li>
-        <li><a routerLink="/">Scraping</a></li>
-        <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/dashboard">Dashboard</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/shops">Shops</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/"> Categories</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/">TOP 10</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/">Shop requests</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/">Scrapers</a></li>
+        <li *ngIf="isLoggedIn" matRipple><a routerLink="/">Scraping</a></li>
+        <li *ngIf="!isLoggedIn" matRipple><a routerLink="/login">Login</a></li>
     </ul>
 
     <app-login-box *ngIf="isLoggedIn"></app-login-box>

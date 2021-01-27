@@ -1,0 +1,33 @@
+<div class="container">
+
+    <mat-form-field appearance="fill">
+        <mat-label>Select country</mat-label>
+        <mat-select placeholder="Select country">
+            <mat-option *ngFor="let country of countriesList" [value]="country.id">
+                {{country.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+<!--     
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="logo">
+            <th mat-header-cell *matHeaderCellDef>Logo</th>
+            <td mat-cell *matCellDef="let element">{{element.logo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="results">
+            <th mat-header-cell *matHeaderCellDef>Results</th>
+            <td mat-cell *matCellDef="let element">{{element.results}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table> -->
+
+</div>

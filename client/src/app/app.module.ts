@@ -3,20 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule} from '@angular/router';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+
+// components
 import { LeftMenuComponent } from './_components/left-menu/left-menu.component';
 import { LoginBoxComponent } from './_components/login-box/login-box.component';
 import {LoginComponent} from './_components/login/login.component';
+import { ShopsComponent } from './_components/shops/shops.component';
+import { HomeComponent } from './_components/home/home.component';
+import { DashboardComponent } from './_components/dashboard/dashboard.component';
 
+// helpers
+import {AuthGuard} from './_helpers/auth.guard';
+
+// modules
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material/input'; 
 import {MatButtonModule} from '@angular/material/button'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './_components/dashboard/dashboard.component';
-import { HomeComponent } from './_components/home/home.component';
-import {AuthGuard} from './_helpers/auth.guard';
+import {MatRippleModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select'; 
+
 
 
 @NgModule({
@@ -26,7 +37,8 @@ import {AuthGuard} from './_helpers/auth.guard';
     LoginBoxComponent,
     LoginComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ShopsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +49,10 @@ import {AuthGuard} from './_helpers/auth.guard';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatTableModule,
+    MatRippleModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
