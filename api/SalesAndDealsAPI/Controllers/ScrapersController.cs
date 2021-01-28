@@ -103,5 +103,13 @@ namespace SalesAndDealsAPI.Controllers
         {
             return _context.Scrapers.Any(e => e.ID == id);
         }
+
+        //Countries Tasks
+        [HttpGet("getCountries")]
+        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
+        {
+            return await _context.Countries.ToListAsync();
+        }
+
     }
 }

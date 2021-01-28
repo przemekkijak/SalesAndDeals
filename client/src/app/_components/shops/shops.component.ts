@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {FetchService} from '../../_services/fetch.service';
+
 
 @Component({
   selector: 'app-shops',
@@ -8,14 +10,17 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ShopsComponent implements OnInit {
   displayedColumns: string[] = ['name','logo','results'];
-  dataSource = new MatTableDataSource<ScraperData>(SCRAPER_DATA);
-  countriesList = COUNTRIES;
-
-  selectedCountryId = 0;
-  constructor() { }
+  countries: any = [];
+  constructor(private fetch: FetchService) { }
 
   ngOnInit(): void {
+    this.fetch.getCountries().subscribe(res => {
+      this.countries = res;
+    });
   }
+
+
+
 }
 
 export interface ScraperData {
@@ -29,13 +34,4 @@ export interface Country {
   id: number;
 }
 
-const COUNTRIES: Country[] = [
-  {name: 'Argentina', id: 1},
-  {name: 'Brasil', id: 2},
-  {name: 'Poland', id: 3}
-]
 
-const SCRAPER_DATA: ScraperData[] = [
-  {name: "Test", logo: "test logo", results: 5},
-  {name: "Carrefour", logo: "carrefour", results: 3},
-];

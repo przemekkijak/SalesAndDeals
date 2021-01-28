@@ -16,10 +16,11 @@ import { DashboardComponent } from './_components/dashboard/dashboard.component'
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
+import {authInterceptorsProviders} from './_helpers/auth.interceptor';
 
 // modules
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material/input'; 
@@ -27,7 +28,6 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select'; 
-
 
 
 @NgModule({
@@ -52,9 +52,10 @@ import {MatSelectModule} from '@angular/material/select';
     RouterModule,
     MatTableModule,
     MatRippleModule,
-    MatSelectModule
+    MatSelectModule,
+
   ],
-  providers: [],
+  providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
