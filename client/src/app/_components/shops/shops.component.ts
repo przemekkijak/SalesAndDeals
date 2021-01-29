@@ -11,19 +11,24 @@ import {FetchService} from '../../_services/fetch.service';
 export class ShopsComponent implements OnInit {
   displayedColumns: string[] = ['name','logo','results'];
   countries: any = [];
+  shops: any = [];
   selectedCountry: number = 0;
   selectedShop: number = 0;
 
-  shops = [
-    {id: 1, name: "Carrefour", results: 5, modifiedBy: "Przemek"},
-    {id: 2, name: "Tesco", results: 3, modifiedBy: "Maciek"},
-    {id: 3, name: "Biedronka", results: 3, modifiedBy: "Karolina"}
-  ]
+
 
   constructor(private fetch: FetchService) { }
   
+  changeCountry() {
+    console.log(this.selectedCountry);
+    this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
+      this.shops = res;
+      console.log(this.shops);
+    })
+  }
+
   changeShop() {
-    // api get shops
+    console.log('shop change');
   }
 
   ngOnInit(): void {

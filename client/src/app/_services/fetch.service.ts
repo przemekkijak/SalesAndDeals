@@ -13,4 +13,8 @@ export class FetchService {
   getCountries() {
     return this.http.get('/api/countries');
   }
+
+  getShopsForCountry(countryId: number) {
+    return this.http.get(`/api/shops/forCountry/${countryId}`);
+  }
 }

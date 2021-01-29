@@ -11,7 +11,7 @@ namespace SalesAndDealsAPI.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Country_id { get; set; }
+        public int Country_id { get; set; }
         public int ActiveOffers { get; set; }
         public string ModifiedByName { get; set; }
         [DataType(DataType.Date)]
@@ -20,6 +20,6 @@ namespace SalesAndDealsAPI.Models
         public DateTime LastExecuted { get; set; }
         [DataType(DataType.Date)]
         public int AssignedTo { get; set; }
-        public int AssignedAmount { get; set; }
+        public string dexiId { get; set; }
     }
 }

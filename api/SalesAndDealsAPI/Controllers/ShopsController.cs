@@ -100,6 +100,12 @@ namespace SalesAndDealsAPI.Controllers
             return NoContent();
         }
 
+        [HttpGet("forCountry/{id}")]
+        public async Task<ActionResult<IEnumerable<Shops>>> GetShopsForCountry(int id)
+        {
+            return await _context.Shops.Where(c => c.Country_id.Equals(id)).ToListAsync();
+        }
+
         private bool ShopsExists(int id)
         {
             return _context.Shops.Any(e => e.ID == id);

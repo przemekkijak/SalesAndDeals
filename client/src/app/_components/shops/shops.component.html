@@ -1,7 +1,7 @@
 <div class="container">
     <mat-form-field>
         <mat-label>Select country</mat-label>
-        <mat-select placeholder="Select country" [(value)]="selectedCountry">
+        <mat-select placeholder="Select country" [(value)]="selectedCountry" (selectionChange)="changeCountry()">
           <mat-option *ngFor="let c of countries" [value]="c.country_id">
             {{c.name}}
           </mat-option>
