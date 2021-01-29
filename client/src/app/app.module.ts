@@ -53,6 +53,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatRippleModule,
     MatSelectModule,
+    ReactiveFormsModule
 
   ],
   providers: [authInterceptorsProviders],

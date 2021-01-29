@@ -11,6 +11,6 @@ export class FetchService {
   constructor(private http: HttpClient) { }
 
   getCountries() {
-    return this.http.get('/api/scrapers/getCountries');
+    return this.http.get('/api/countries');
   }
 }

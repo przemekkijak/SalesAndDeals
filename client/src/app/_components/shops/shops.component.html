@@ -1,11 +1,24 @@
 <div class="container">
-        <mat-form-field>
-            <mat-label>Select country</mat-label>
-            <mat-select placeholder="Select country">
-                <mat-option *ngFor="let country of countries" [value]="country.id">
-                    {{country.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field>
+        <mat-label>Select country</mat-label>
+        <mat-select placeholder="Select country" [(value)]="selectedCountry">
+          <mat-option *ngFor="let c of countries" [value]="c.country_id">
+            {{c.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+        <br/><br><br>
+        <br/><br><br>
+    <mat-form-field  *ngIf="selectedCountry > 0">
+        <mat-label>Select shop</mat-label>
+        <mat-select placeholder="Select shop" [(value)]="selectedShop" (selectionChange)="changeShop()">
+            <mat-option *ngFor="let s of shops" [value]="s.id">
+                {{s.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+      
 
 </div>

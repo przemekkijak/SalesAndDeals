@@ -11,7 +11,7 @@ namespace SalesAndDealsAPI.Models
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Scraper> Scrapers { get; set; }
+        public DbSet<Shops> Shops { get; set; }
         public DbSet<Country> Countries { get; set; }
 
     }
