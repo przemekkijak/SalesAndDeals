@@ -10,11 +10,11 @@ namespace SalesAndDealsAPI.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
-        public UserDTO(int Id, string Username, string Role)
+        public UserDTO(int id, string username, string role)
         {
-            this.Id = Id;
-            this.Username = Username;
-            this.Role = Role;
+            this.Id = id;
+            this.Username = username;
+            this.Role = role;
         }
     }
 

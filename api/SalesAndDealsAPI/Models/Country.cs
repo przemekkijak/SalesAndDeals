@@ -10,16 +10,16 @@ namespace SalesAndDealsAPI.Models
     public class Country
     {
         [Key]
-        public int Country_id { get; set; }
+        public int CountryId { get; set; }
         public string Name { get; set; }
         public string CountryCode { get; set; }
 
         public Country()
         {
         }
-        public Country(int country_id, string name, string countryCode)
+        public Country(int countryId, string name, string countryCode)
         {
-            this.Country_id = country_id;
+            this.CountryId = countryId;
             this.Name = name;
             this.CountryCode = countryCode;
         }
