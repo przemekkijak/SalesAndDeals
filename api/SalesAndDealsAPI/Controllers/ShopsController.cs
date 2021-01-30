@@ -107,7 +107,7 @@ namespace SalesAndDealsAPI.Controllers
             List<Shops> shops = await _context.Shops.Where(c => c.CountryId.Equals(id)).ToListAsync();
             foreach (Shops shop in shops)
             {
-                shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.Id) && (r.EndDate > today)).Count();
+                shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.Id) && (r.EndDate >= today)).Count();
             }
             return shops;
         }
