@@ -103,7 +103,13 @@ namespace SalesAndDealsAPI.Controllers
         [HttpGet("forCountry/{id}")]
         public async Task<ActionResult<IEnumerable<Shops>>> GetShopsForCountry(int id)
         {
-            return await _context.Shops.Where(c => c.CountryId.Equals(id)).ToListAsync();
+
+            List<Shops> shops = await _context.Shops.Where(c => c.CountryId.Equals(id)).ToListAsync();
+            foreach (Shops shop in shops)
+            {
+                shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.Id)).Count();
+            }
+            return shops;
         }
 
         private bool ShopsExists(int id)

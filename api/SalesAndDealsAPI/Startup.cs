@@ -13,7 +13,6 @@ using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using SalesAndDealsAPI.Services;
 
 namespace SalesAndDealsAPI
 {

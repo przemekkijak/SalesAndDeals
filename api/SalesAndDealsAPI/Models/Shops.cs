@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using SalesAndDealsAPI.Services;
 
 
 namespace SalesAndDealsAPI.Models
@@ -27,7 +26,7 @@ namespace SalesAndDealsAPI.Models
             this.Id = id;
             this.Name = name;
             this.CountryId = countryId;
-            this.ActiveOffers = 5;
+            this.ActiveOffers = activeOffers;
             this.ModifiedByName = modifiedByName;
             this.LastModified = ParseDate(lastModified);
             this.LastExecuted = ParseDate(lastExecuted);
