@@ -42,7 +42,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // PUT: api/Results/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutResult(int id, Result result)
         {
@@ -73,7 +72,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         // POST: api/Results
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Result>> PostResult(Result result)
         {
@@ -99,6 +97,11 @@ namespace SalesAndDealsAPI.Controllers
             return NoContent();
         }
 
+        [HttpGet("forShop/{id}")]
+        public async Task<ActionResult<IEnumerable<Result>>> GetResultsForShop(int id)
+        {
+            return await _context.Results.Where(r => r.ShopId.Equals(id)).ToListAsync();
+        }
         private bool ResultExists(int id)
         {
             return _context.Results.Any(e => e.Id == id);

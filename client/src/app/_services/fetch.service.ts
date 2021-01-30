@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -16,5 +15,9 @@ export class FetchService {
 
   getShopsForCountry(countryId: number) {
     return this.http.get(`/api/shops/forCountry/${countryId}`);
+  }
+
+  getResultsForShop(shopId: number) {
+    return this.http.get(`/api/results/forShop/${shopId}`);
   }
 }

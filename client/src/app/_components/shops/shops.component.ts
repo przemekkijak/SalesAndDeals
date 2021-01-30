@@ -10,8 +10,11 @@ import {FetchService} from '../../_services/fetch.service';
 })
 export class ShopsComponent implements OnInit {
   displayedColumns: string[] = ['name','logo','results'];
+  
   countries: any = [];
   shops: any = [];
+  results: any = [];
+
   selectedCountry: number = 0;
   selectedShop: number = 0;
 
@@ -20,15 +23,16 @@ export class ShopsComponent implements OnInit {
   constructor(private fetch: FetchService) { }
   
   changeCountry() {
-    console.log(this.selectedCountry);
     this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
       this.shops = res;
-      console.log(this.shops);
     })
   }
 
   changeShop() {
-    console.log('shop change');
+    this.fetch.getResultsForShop(this.selectedShop).subscribe(res => {
+      this.results = res;
+      console.log(this.results);
+    })
   }
 
   ngOnInit(): void {
