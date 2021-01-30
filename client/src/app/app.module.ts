@@ -27,8 +27,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRippleModule} from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select'; 
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -53,8 +54,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatRippleModule,
     MatSelectModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]

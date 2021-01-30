@@ -48,7 +48,7 @@ namespace SalesAndDealsAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
-            if (id != shops.ID)
+            if (id != shops.Id)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace SalesAndDealsAPI.Controllers
             _context.Shops.Add(shops);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetShops", new { id = shops.ID }, shops);
+            return CreatedAtAction("GetShops", new { id = shops.Id }, shops);
         }
 
         // DELETE: api/Shops/5
@@ -108,7 +108,7 @@ namespace SalesAndDealsAPI.Controllers
 
         private bool ShopsExists(int id)
         {
-            return _context.Shops.Any(e => e.ID == id);
+            return _context.Shops.Any(e => e.Id == id);
         }
     }
 }

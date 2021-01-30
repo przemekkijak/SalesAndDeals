@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
 import {FetchService} from '../../_services/fetch.service';
+import { ViewChild } from '@angular/core';
+import {MatSort} from '@angular/material/sort'; 
+
 
 
 @Component({
@@ -9,31 +13,26 @@ import {FetchService} from '../../_services/fetch.service';
   styleUrls: ['./shops.component.scss']
 })
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['name','logo','results'];
-  
+  displayedColumns: string[] = ['rank','name','category', 'lastExecuted', 'activeOffers'];
   countries: any = [];
   shops: any = [];
-  results: any = [];
-
+  dataSource = new MatTableDataSource<any>();
   selectedCountry: number = 0;
-  selectedShop: number = 0;
 
-
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private fetch: FetchService) { }
   
   changeCountry() {
     this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
       this.shops = res;
+      this.dataSource.data = this.shops;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     })
   }
 
-  changeShop() {
-    this.fetch.getResultsForShop(this.selectedShop).subscribe(res => {
-      this.results = res;
-      console.log(this.results);
-    })
-  }
 
   ngOnInit(): void {
     this.fetch.getCountries().subscribe(res => {
@@ -42,18 +41,4 @@ export class ShopsComponent implements OnInit {
   }
 
 }
-
-
-
-export interface ScraperData {
-  name: string;
-  logo: string;
-  results: number;
-}
-
-export interface Country {
-  name: string;
-  id: number;
-}
-
 
