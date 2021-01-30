@@ -16,7 +16,7 @@ namespace SalesAndDealsAPI.Controllers
     [ApiController]
     public class ShopsController : ControllerBase
     {
-        private readonly SnDContext _context;
+        public readonly SnDContext _context;
 
         public ShopsController(SnDContext context)
         {

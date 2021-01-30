@@ -13,6 +13,7 @@ using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using SalesAndDealsAPI.Services;
 
 namespace SalesAndDealsAPI
 {
@@ -50,6 +51,7 @@ namespace SalesAndDealsAPI
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 };
             });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

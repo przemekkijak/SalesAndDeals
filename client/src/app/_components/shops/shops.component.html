@@ -32,8 +32,13 @@
                 <td mat-cell *matCellDef="let shop">{{shop.lastExecuted}}</td>
             </ng-container>
 
+            <ng-container matColumnDef="lastModified">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Last modified</th>
+                <td mat-cell *matCellDef="let shop">{{shop.lastModified}}</td>
+            </ng-container>
+
             <ng-container matColumnDef="activeOffers">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Active Offers</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Active offers</th>
                 <td mat-cell *matCellDef="let shop">{{shop.activeOffers}}</td>
             </ng-container>
 
