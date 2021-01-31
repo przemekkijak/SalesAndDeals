@@ -17,14 +17,15 @@ namespace SalesAndDealsAPI.Models
         public string LastModified { get; set; }
         public string LastExecuted { get; set; }
         public int AssignedTo { get; set; }
-        public string DexiId { get; set; }
+        public string DexiRun { get; set; }
+        public string DexiRobot { get; set; }
         public int Rank { get; set; }
         public string Category { get; set; }
         public int NotesAmount { get; set; }
         public string InputUrl { get; set; }
 
 
-        public Shops(int id, string name, int countryId, int activeOffers, string modifiedByName, string lastModified, string lastExecuted, int assignedTo, string dexiId, int rank, string category, int notesAmount, string inputUrl)
+        public Shops(int id, string name, int countryId, int activeOffers, string modifiedByName, string lastModified, string lastExecuted, int assignedTo, string dexiRun, string DexiRobot, int rank, string category, int notesAmount, string inputUrl)
         {
             this.Id = id;
             this.Name = name;
@@ -34,7 +35,8 @@ namespace SalesAndDealsAPI.Models
             this.LastModified = ParseDate(lastModified);
             this.LastExecuted = ParseDate(lastExecuted);
             this.AssignedTo = assignedTo;
-            this.DexiId = dexiId;
+            this.DexiRun = dexiRun;
+            this.DexiRobot = DexiRobot;
             this.Rank = rank;
             this.Category = category;
             this.NotesAmount = notesAmount;

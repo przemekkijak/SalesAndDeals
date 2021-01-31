@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="notes">
+        <mat-card class="noteCard" *ngFor="let note of notes">
+            <mat-card-subtitle>{{note.author}} - {{note.createdAt | date: 'medium'}}</mat-card-subtitle>
+            <mat-card-content>{{note.contents}}</mat-card-content>
+        </mat-card>
+    </div>
+
+    <form class="noteForm">
+        <mat-form-field>
+            <input matInput placeholder="Add note">
+        </mat-form-field>
+
+        <button mat-flat-button color="primary">Add</button>
+    </form>
+</div>

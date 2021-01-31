@@ -20,4 +20,9 @@ export class FetchService {
   getResultsForShop(shopId: number) {
     return this.http.get(`/api/results/forShop/${shopId}`);
   }
+
+  getNotesForShop(shopId: number) {
+    return this.http.get(`/api/shops/getNotes/${shopId}`);
+    
+  }
 }

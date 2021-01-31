@@ -1,0 +1,22 @@
+.container {
+    width: 40vw;
+    height: 60vh;
+    display: grid;
+    grid-template-rows: 80% 20%;
+    overflow: hidden;
+    .notes {
+        overflow: auto;
+        .noteCard {
+            position: relative;
+            margin: 2%;
+        }
+    }
+    .noteForm {
+        position: relative;
+        top: 25%;
+        margin: 2%;
+        button {
+            margin: 5%;
+        }
+    }
+}

@@ -13,6 +13,7 @@ import {LoginComponent} from './_components/login/login.component';
 import { ShopsComponent } from './_components/shops/shops.component';
 import { HomeComponent } from './_components/home/home.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
+import { ShopNotesComponent } from './_components/shop-notes/shop-notes.component';
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -30,6 +31,9 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card'; 
+
 
 @NgModule({
   declarations: [
@@ -39,7 +43,8 @@ import {MatSortModule} from '@angular/material/sort';
     LoginComponent,
     DashboardComponent,
     HomeComponent,
-    ShopsComponent
+    ShopsComponent,
+    ShopNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatSelectModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]

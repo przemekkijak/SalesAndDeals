@@ -4,6 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {FetchService} from '../../_services/fetch.service';
 import { ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort'; 
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ShopNotesComponent} from '../shop-notes/shop-notes.component';
 
 
 
@@ -12,8 +14,9 @@ import {MatSort} from '@angular/material/sort';
   templateUrl: './shops.component.html',
   styleUrls: ['./shops.component.scss']
 })
+
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['rank','name','category','lastExecuted','lastModified', 'activeOffers','notes', 'inputUrl'];
+  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers', 'notes','inputUrl', 'dexiRobot'];
   countries: any = [];
   shops: any = [];
   dataSource = new MatTableDataSource<any>();
@@ -22,7 +25,7 @@ export class ShopsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private fetch: FetchService) { }
+  constructor(private fetch: FetchService, private dialog: MatDialog) { }
   
   changeCountry() {
     this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
@@ -33,6 +36,10 @@ export class ShopsComponent implements OnInit {
     })
   }
 
+  openNotes(shopId: number) {
+    this.dialog.open(ShopNotesComponent, {data: {shopId: shopId},
+    });
+  }
 
   ngOnInit(): void {
     this.fetch.getCountries().subscribe(res => {
