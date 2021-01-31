@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Note} from '../_models/note';
 
 
 @Injectable({
@@ -22,7 +23,10 @@ export class FetchService {
   }
 
   getNotesForShop(shopId: number) {
-    return this.http.get(`/api/shops/getNotes/${shopId}`);
-    
+    return this.http.get(`/api/shops/getNotesForShop/${shopId}`); 
+  }
+
+  addNoteForShop(note: Note) {
+    return this.http.post<Note>('/api/shops/addNote', note);
   }
 }

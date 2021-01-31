@@ -8,9 +8,9 @@
 
     <form class="noteForm">
         <mat-form-field>
-            <input matInput placeholder="Add note">
+            <input matInput placeholder="Add note" [(ngModel)]="noteContent" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
 
-        <button mat-flat-button color="primary">Add</button>
+        <button mat-flat-button color="primary" (click)="addNote(noteContent)">Add</button>
     </form>
 </div>
