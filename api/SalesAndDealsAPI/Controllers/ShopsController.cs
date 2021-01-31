@@ -108,8 +108,15 @@ namespace SalesAndDealsAPI.Controllers
             foreach (Shops shop in shops)
             {
                 shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.Id) && (r.EndDate >= today)).Count();
+                shop.NotesAmount = _context.ShopNotes.Where(n => n.ShopId.Equals(shop.Id)).Count();
             }
             return shops;
+        }
+
+        [HttpGet("getNotes/{id}")]
+        public async Task<ActionResult<IEnumerable<ShopNotes>>> GetNotesForShop(int id)
+        {
+            return await _context.ShopNotes.Where(n => n.ShopId.Equals(id)).ToListAsync();
         }
 
         private bool ShopsExists(int id)

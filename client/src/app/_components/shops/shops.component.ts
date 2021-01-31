@@ -13,7 +13,7 @@ import {MatSort} from '@angular/material/sort';
   styleUrls: ['./shops.component.scss']
 })
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['rank','name','category', 'lastExecuted', 'lastModified', 'activeOffers'];
+  displayedColumns: string[] = ['rank','name','category', 'lastExecuted', 'lastModified', 'notes', 'activeOffers'];
   countries: any = [];
   shops: any = [];
   dataSource = new MatTableDataSource<any>();
