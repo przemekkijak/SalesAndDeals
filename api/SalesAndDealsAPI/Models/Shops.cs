@@ -21,9 +21,10 @@ namespace SalesAndDealsAPI.Models
         public int Rank { get; set; }
         public string Category { get; set; }
         public int NotesAmount { get; set; }
+        public string InputUrl { get; set; }
 
 
-        public Shops(int id, string name, int countryId, int activeOffers, string modifiedByName, string lastModified, string lastExecuted, int assignedTo, string dexiId, int rank, string category, int notesAmount)
+        public Shops(int id, string name, int countryId, int activeOffers, string modifiedByName, string lastModified, string lastExecuted, int assignedTo, string dexiId, int rank, string category, int notesAmount, string inputUrl)
         {
             this.Id = id;
             this.Name = name;
@@ -37,6 +38,7 @@ namespace SalesAndDealsAPI.Models
             this.Rank = rank;
             this.Category = category;
             this.NotesAmount = notesAmount;
+            this.InputUrl = inputUrl;
         }
 
         private static string ParseDate(string timestamp)
