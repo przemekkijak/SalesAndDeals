@@ -6,11 +6,11 @@
         </mat-card>
     </div>
 
-    <form class="noteForm">
+    <form class="noteForm" [formGroup]="form">
         <mat-form-field>
-            <input matInput placeholder="Add note" [(ngModel)]="noteContent" [ngModelOptions]="{standalone: true}">
+            <input formControlName="content" required matInput placeholder="Add note" [(ngModel)]="noteContent">
         </mat-form-field>
 
-        <button mat-flat-button color="primary" (click)="addNote(noteContent)">Add</button>
+        <button type="submit" [disabled]="!form.valid" mat-flat-button color="primary" (click)="addNote(noteContent)">Add</button>
     </form>
 </div>
