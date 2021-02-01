@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FetchService } from 'src/app/_services/fetch.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import {Note} from '../../_models/note';
-import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-shop-notes',

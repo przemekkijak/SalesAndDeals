@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-
+using SalesAndDealsAPI.Helpers;
 
 namespace SalesAndDealsAPI.Models
 {
@@ -32,8 +32,8 @@ namespace SalesAndDealsAPI.Models
             this.CountryId = countryId;
             this.ActiveOffers = activeOffers;
             this.ModifiedByName = modifiedByName;
-            this.LastModified = ParseDate(lastModified);
-            this.LastExecuted = ParseDate(lastExecuted);
+            this.LastModified = TimestampToDate.Parse(lastModified);
+            this.LastExecuted = TimestampToDate.Parse(lastExecuted);
             this.AssignedTo = assignedTo;
             this.DexiRun = dexiRun;
             this.DexiRobot = DexiRobot;
@@ -41,14 +41,6 @@ namespace SalesAndDealsAPI.Models
             this.Category = category;
             this.NotesAmount = notesAmount;
             this.InputUrl = inputUrl;
-        }
-
-        private static string ParseDate(string timestamp)
-        {
-            System.DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dt = dt.AddMilliseconds(Double.Parse(timestamp)).ToLocalTime();
-            string[] parsed = dt.ToString().Split(" ")[0].Split("/");
-            return $"{parsed[1]}/{parsed[0]}/{parsed[2]}";
         }
 
     }
