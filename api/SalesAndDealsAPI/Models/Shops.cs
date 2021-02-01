@@ -30,7 +30,7 @@ namespace SalesAndDealsAPI.Models
             this.Name = name;
             this.CountryId = countryId;
             this.ActiveOffers = activeOffers;
-            this.LastExecuted = TimestampToDate.Parse(lastExecuted);
+            this.LastExecuted = lastExecuted;
             this.ExecutionState = executionState;
             this.AssignedTo = assignedTo;
             this.DexiRun = dexiRun;

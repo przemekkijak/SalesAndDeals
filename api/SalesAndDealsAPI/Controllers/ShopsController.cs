@@ -145,7 +145,7 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         [HttpPut("fetchExecutions/{shopId}")]
-        public async Task<ActionResult> FetchExecutionsFromDexi(int shopId)
+        public async Task<ActionResult> FetchExecutionsForShop(int shopId)
         {
             if (ShopsExists(shopId))
             {
@@ -158,8 +158,7 @@ namespace SalesAndDealsAPI.Controllers
                 string response = await http.GetAsync($"https://api.dexi.io/runs/{shop.DexiRun}/executions?limit=1").Result.Content.ReadAsStringAsync();
                 JObject res = JObject.Parse(response);
 
-                shop.LastExecuted = (string)res.SelectToken("rows[0].finished");
-                Console.WriteLine(shop.LastExecuted);
+                shop.LastExecuted = TimestampToDate.Parse((string)res.SelectToken("rows[0].finished"));
                 shop.ExecutionState = (string)res.SelectToken("rows[0].state");
 
                 try
@@ -183,7 +182,21 @@ namespace SalesAndDealsAPI.Controllers
             return NotFound();
         }
 
+        [HttpPut("fetchExecutionsForAll")]
+        public async Task<ActionResult>FetchExecutionsForAll()
+        {
+            HttpClient http = new HttpClient();
+            http.DefaultRequestHeaders.Add("X-DexiIO-Access", DotNetEnv.Env.GetString("DEXIACCESS"));
+            http.DefaultRequestHeaders.Add("X-DexiIO-Account", DotNetEnv.Env.GetString("DEXIACCOUNT"));
+            http.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
+            var shopsIds = await _context.Shops.Select(s => s.Id).ToListAsync();
+            foreach(var id in shopsIds)
+            {
+                await FetchExecutionsForShop(id);
+            }
+            return NoContent();
+        }
 
 
 
