@@ -70,31 +70,28 @@ namespace SalesAndDealsAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Executions
-        //[HttpPost]
-        //public async Task<ActionResult<Executions>> PostExecutions(Executions executions)
-        //{
-
-        //    _context.Executions.Add(executions);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("GetExecutions", new { id = executions.ShopId }, executions);
-        //}
-        
-        [HttpGet("fromdexi")]
-        public async Task<ActionResult<Executions>> GetFromDexi()
+        //POST: api/Executions
+       [HttpPost("{id}")]
+        public async Task<ActionResult<Executions>> PostExecutions(int id)
         {
+            string dexiRun = await _context.Shops.Where(s => s.Id.Equals(id)).Select(s => s.DexiRun).SingleOrDefaultAsync();
             HttpClient http = new HttpClient();
             http.DefaultRequestHeaders.Add("X-DexiIO-Access", DotNetEnv.Env.GetString("DEXIACCESS"));
             http.DefaultRequestHeaders.Add("X-DexiIO-Account", DotNetEnv.Env.GetString("DEXIACCOUNT"));
             http.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            var response = http.GetAsync("https://api.dexi.io/runs/58286324-2a61-447a-91fa-c4cd082de38d/executions?limit=1").Result;
-            string responseAsString = await response.Content.ReadAsStringAsync();
-            Executions result = JsonConvert.DeserializeObject<Executions>(responseAsString);
-            return result;
+            string response = await http.GetAsync($"https://api.dexi.io/runs/{dexiRun}/executions?limit=1").Result.Content.ReadAsStringAsync();
+            JObject res = JObject.Parse(response);
+            
+            string starts = (string)res.SelectToken("rows[0].starts");
+            string finished = (string)res.SelectToken("rows[0].finished");
+            string state = (string)res.SelectToken("rows[0].state");
+            
+            Executions executions = new Executions(id, starts, finished, state);
+            _context.Executions.Add(executions);
+            await _context.SaveChangesAsync();
 
+            return CreatedAtAction("GetExecutionsForShop", new { id = executions.ShopId }, executions);
         }
-
 
 
 
