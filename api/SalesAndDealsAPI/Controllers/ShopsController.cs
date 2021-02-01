@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesAndDealsAPI.Models;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using SalesAndDealsAPI.Helpers;
 
 namespace SalesAndDealsAPI.Controllers
 {
@@ -141,5 +143,49 @@ namespace SalesAndDealsAPI.Controllers
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetNote", new { id = note.Id }, note);
         }
+
+        [HttpPut("fetchExecutions/{shopId}")]
+        public async Task<ActionResult> FetchExecutionsFromDexi(int shopId)
+        {
+            if (ShopsExists(shopId))
+            {
+                var shop = await _context.Shops.Where(s => s.Id.Equals(shopId)).SingleOrDefaultAsync();
+                HttpClient http = new HttpClient();
+                http.DefaultRequestHeaders.Add("X-DexiIO-Access", DotNetEnv.Env.GetString("DEXIACCESS"));
+                http.DefaultRequestHeaders.Add("X-DexiIO-Account", DotNetEnv.Env.GetString("DEXIACCOUNT"));
+                http.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                string response = await http.GetAsync($"https://api.dexi.io/runs/{shop.DexiRun}/executions?limit=1").Result.Content.ReadAsStringAsync();
+                JObject res = JObject.Parse(response);
+
+                shop.LastExecuted = (string)res.SelectToken("rows[0].finished");
+                Console.WriteLine(shop.LastExecuted);
+                shop.ExecutionState = (string)res.SelectToken("rows[0].state");
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ShopsExists(shopId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+
+                    }
+                }
+                return NoContent();
+            }
+            return NotFound();
+        }
+
+
+
+
+
     }
 }

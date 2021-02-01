@@ -29,4 +29,8 @@ export class FetchService {
   addNoteForShop(note: Note) {
     return this.http.post<Note>('/api/shops/addNote', note);
   }
+
+  getExecutionsForShop(shopId: number) {
+    return this.http.get(`/api/executions/${shopId}`);
+  }
 }
