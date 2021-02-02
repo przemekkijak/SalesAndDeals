@@ -34,6 +34,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu'; 
 
 
 
@@ -66,7 +67,8 @@ import {MatCardModule} from '@angular/material/card';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]

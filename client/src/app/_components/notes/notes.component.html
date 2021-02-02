@@ -1,7 +1,7 @@
 <div class="container">
     <div class="tableContainer">
-        <table mat-table [dataSource]="notesData" >
-            <ng container matColumnDef="shop" >
+        <table mat-table [dataSource]="notesData">
+            <ng container matColumnDef="shop">
                 <th mat-header-cell *matHeaderCellDef >Shop</th>
                 <td mat-cell *matCellDef="let note">{{note.shop}}</td>
             </ng>
@@ -11,9 +11,32 @@
                 <td mat-cell *matCellDef="let note">{{note.createdAt | date: 'mediumDate'}} - {{note.author}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="noteContent" >
+            <ng-container matColumnDef="noteContent">
                 <th mat-header-cell *matHeaderCellDef>Last Note</th>
                 <td mat-cell *matCellDef="let note">{{note.contents}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="assignTo">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let note">
+                    <button mat-button [matMenuTriggerFor]="assign">Assign to</button>
+                    <mat-menu #assign="matMenu">
+                        <button mat-menu-item>Przemek</button>
+                        <button mat-menu-item>Maciek</button>
+                        <button mat-menu-item>Karolina</button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="markAs">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let note">
+                    <button mat-button [matMenuTriggerFor]="mark">Mark as</button>
+                    <mat-menu #mark="matMenu">
+                        <button mat-menu-item>No offer</button>
+                        <button mat-menu-item>Problem with website</button>
+                    </mat-menu>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

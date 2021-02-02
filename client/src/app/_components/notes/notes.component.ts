@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import {MatTableDataSource} from '@angular/material/table';
 import { FetchService } from 'src/app/_services/fetch.service';
 
@@ -10,8 +11,10 @@ import { FetchService } from 'src/app/_services/fetch.service';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  displayedColumns: string[] = ['shop','noteInfo','noteContent'];
+  displayedColumns: string[] = ['shop','noteInfo','noteContent', 'assignTo', 'markAs'];
   notesData: any = new MatTableDataSource<any>();
+
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
 
   constructor(private fetch: FetchService, private dialog: MatDialog) { }
