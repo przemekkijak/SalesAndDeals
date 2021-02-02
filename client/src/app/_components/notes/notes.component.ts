@@ -11,7 +11,7 @@ import { FetchService } from 'src/app/_services/fetch.service';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  displayedColumns: string[] = ['shop','noteInfo','noteContent', 'assignTo', 'markAs'];
+  displayedColumns: string[] = ['shop','noteInfo','noteContent','fullNotes','assignTo', 'markAs'];
   notesData: any = new MatTableDataSource<any>();
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
