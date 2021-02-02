@@ -30,7 +30,7 @@
             <ng-container matColumnDef="lastExecuted">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Last executed</th>
                 <td mat-cell *matCellDef="let shop">
-                    <a mat-button href="https://app.dexi.io/#/robots/{{shop.dexiRobot}}/runs/{{shop.dexiRun}}/edit/executions" target="_blank">{{shop.lastExecuted}}</a>
+                    <a [ngClass]="(shop.robotState=='FAILED')?'red':''" mat-button href="https://app.dexi.io/#/robots/{{shop.dexiRobot}}/runs/{{shop.dexiRun}}/edit/executions" target="_blank">{{shop.lastExecuted}}</a>
                 </td>
             </ng-container>
 
