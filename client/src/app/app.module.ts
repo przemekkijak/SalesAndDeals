@@ -14,6 +14,7 @@ import { ShopsComponent } from './_components/shops/shops.component';
 import { HomeComponent } from './_components/home/home.component';
 import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { ShopNotesComponent } from './_components/shop-notes/shop-notes.component';
+import { NotesComponent } from './_components/notes/notes.component'; 
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -32,7 +33,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import {MatCardModule} from '@angular/material/card';
     DashboardComponent,
     HomeComponent,
     ShopsComponent,
-    ShopNotesComponent
+    ShopNotesComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

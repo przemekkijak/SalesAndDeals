@@ -119,30 +119,6 @@ namespace SalesAndDealsAPI.Controllers
             return _context.Shops.Any(e => e.Id == id);
         }
 
-        [HttpGet("getNotesForShop/{id}")]
-        public async Task<ActionResult<IEnumerable<ShopNotes>>> GetNotesForShop(int id)
-        {
-            return await _context.ShopNotes.Where(n => n.ShopId.Equals(id)).ToListAsync();
-        }
-
-        [HttpGet("getNote/{id}")]
-        public async Task<ActionResult<ShopNotes>> GetNote(int id)
-        {
-            var result = await _context.ShopNotes.FindAsync(id);
-            if(result == null)
-            {
-                return NotFound();
-            }
-            return result;
-        }
-
-        [HttpPost("addNote")]
-        public async Task<ActionResult<ShopNotes>> PostNote(ShopNotes note)
-        {
-            _context.ShopNotes.Add(note);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction("GetNote", new { id = note.Id }, note);
-        }
 
         [HttpPut("fetchExecutions/{shopId}")]
         public async Task<ActionResult> FetchExecutionsForShop(int shopId)

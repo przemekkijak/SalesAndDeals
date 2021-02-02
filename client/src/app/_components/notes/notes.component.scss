@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    padding: 5%;
+    height: 60%;
+    table {
+        width: 100%;
+        td {
+            .green{
+                color: green;
+            }
+            .red{
+                color: red;
+            }
+        }
+    }
+}

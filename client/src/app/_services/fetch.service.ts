@@ -23,12 +23,17 @@ export class FetchService {
   }
 
   getNotesForShop(shopId: number) {
-    return this.http.get(`/api/shops/getNotesForShop/${shopId}`); 
+    return this.http.get(`/api/shopNotes/getNotesForShop/${shopId}`); 
   }
 
   addNoteForShop(note: Note) {
-    return this.http.post('/api/shops/addNote', note);
+    return this.http.post('/api/shopNotes/addNote', note);
   }
+
+  getAllNotes() {
+    return this.http.get('/api/shopNotes/')
+  }
+
 
   getExecutionsForShop(shopId: number) {
     return this.http.get(`/api/executions/${shopId}`);

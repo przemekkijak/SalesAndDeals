@@ -16,5 +16,6 @@ namespace SalesAndDealsAPI.Models
         [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
         public string Contents { get; set; }
+        public string ReadedBy { get; set; }
     }
 }
