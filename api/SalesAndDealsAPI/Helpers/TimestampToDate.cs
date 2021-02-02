@@ -20,7 +20,7 @@ namespace SalesAndDealsAPI.Helpers
             dt = dt.AddMilliseconds(Double.Parse(timestamp)).ToLocalTime();
             string[] parsed = dt.ToString().Split(" ")[0].Split("/");
             parsed[1] = (int.Parse(parsed[1]) < 10) ? $"0{parsed[1]}" : parsed[1];
-            parsed[2] = (int.Parse(parsed[2]) < 10) ? $"0{parsed[2]}" : parsed[2];
+            parsed[0] = (int.Parse(parsed[0]) < 10) ? $"0{parsed[0]}" : parsed[0];
             return $"{parsed[1]}/{parsed[0]}/{parsed[2]}";
         }
     }

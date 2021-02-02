@@ -133,13 +133,8 @@ namespace SalesAndDealsAPI.Controllers
 
                 string response = await http.GetAsync($"https://api.dexi.io/runs/{shop.DexiRun}/executions?limit=1").Result.Content.ReadAsStringAsync();
                 JObject res = JObject.Parse(response);
-
-                var executionState = (string)res.SelectToken("rows[0].state");
                 shop.LastExecuted = TimestampToDate.Parse((string)res.SelectToken("rows[0].finished"));
-                if(executionState == "FAILED")
-                {
-                    shop.RobotState = "FAILED";
-                }
+                shop.ExecutionState = (string)res.SelectToken("rows[0].state");
 
                 try
                 {
