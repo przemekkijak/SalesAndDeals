@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import {MatTableDataSource} from '@angular/material/table';
 import { FetchService } from 'src/app/_services/fetch.service';
+import { ShopNotesComponent } from '../shop-notes/shop-notes.component';
 
 
 @Component({
@@ -18,6 +19,12 @@ export class NotesComponent implements OnInit {
 
 
   constructor(private fetch: FetchService, private dialog: MatDialog) { }
+
+
+  openNotes(shopId: number) {
+    this.dialog.open(ShopNotesComponent, {data: {shopId: shopId},
+    });
+  }
 
   ngOnInit(): void { 
     this.fetch.getAllNotes().subscribe(res => {
