@@ -37,7 +37,19 @@
             <ng-container matColumnDef="dexiExecutions">
                 <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
                 <td mat-cell *matCellDef="let scrapers">
-                    executions
+                    <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/runs/{{scrapers.dexiRun}}/edit/executions" target="_blank">Executions</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="markAs">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let note">
+                    <button mat-button [matMenuTriggerFor]="mark">Mark shop as</button>
+                    <mat-menu #mark="matMenu">
+                        <button mat-menu-item>No offer</button>
+                        <button mat-menu-item>Problem with website</button>
+                        <button mat-menu-item>Can't do this</button>
+                    </mat-menu>
                 </td>
             </ng-container>
 
