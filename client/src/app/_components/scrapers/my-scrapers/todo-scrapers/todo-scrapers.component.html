@@ -1,1 +1,51 @@
-<p>todo-scrapers works!</p>
+<div class="container">
+    <div class="tableContainer">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let scrapers">{{scrapers.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="lastExecuted">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Last executed</th>
+                <td mat-cell *matCellDef="let scrapers">
+                    <a [ngClass]="(scrapers.executionState=='FAILED')?'red':''" mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/runs/{{scrapers.dexiRun}}/edit/executions" target="_blank">{{scrapers.lastExecuted}}</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="notes">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
+                <td mat-cell *matCellDef="let scrapers">
+                    <!-- <button (click)="openNotes(scrapers.id)" mat-button>Notes ({{scrapers.notesAmount}})</button> -->
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="inputUrl">
+                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <td mat-cell *matCellDef="let scrapers">
+                    <a mat-button href="{{scrapers.inputUrl}}" target="_blank">Link</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dexiRobot">
+                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <td mat-cell *matCellDef="let scrapers">
+                    <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/editor/scraper" target="_blank">Edit robot</a>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dexiExecutions">
+                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <td mat-cell *matCellDef="let scrapers">
+                    executions
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10,20,50,250]" showFirstLastButtons></mat-paginator>
+    </div>
+
+</div>
