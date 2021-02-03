@@ -12,9 +12,12 @@ import { LoginBoxComponent } from './_components/login-box/login-box.component';
 import {LoginComponent} from './_components/login/login.component';
 import { ShopsComponent } from './_components/shops/shops.component';
 import { HomeComponent } from './_components/home/home.component';
-import { DashboardComponent } from './_components/dashboard/dashboard.component';
 import { ShopNotesComponent } from './_components/shop-notes/shop-notes.component';
 import { NotesComponent } from './_components/notes/notes.component'; 
+import {ScrapersComponent} from './_components/scrapers/scrapers.component';
+import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component'; 
+import {FailingsComponent} from './_components/scrapers/failings/failings.component';
+import {NoofferComponent} from './_components/scrapers/nooffer/nooffer.component';
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -35,6 +38,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu'; 
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -44,11 +48,14 @@ import {MatMenuModule} from '@angular/material/menu';
     LeftMenuComponent,
     LoginBoxComponent,
     LoginComponent,
-    DashboardComponent,
     HomeComponent,
     ShopsComponent,
     ShopNotesComponent,
-    NotesComponent
+    NotesComponent,
+    ScrapersComponent,
+    MyScrapersComponent,
+    FailingsComponent,
+    NoofferComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +75,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSortModule,
     MatDialogModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]
