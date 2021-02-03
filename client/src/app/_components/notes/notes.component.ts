@@ -4,6 +4,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import {MatTableDataSource} from '@angular/material/table';
 import { FetchService } from 'src/app/_services/fetch.service';
 import { ShopNotesComponent } from '../shop-notes/shop-notes.component';
+import {MatPaginator} from '@angular/material/paginator';
+
 
 
 @Component({
@@ -15,6 +17,7 @@ export class NotesComponent implements OnInit {
   displayedColumns: string[] = ['shop','noteInfo','noteContent','fullNotes','assignTo', 'markAs'];
   notesData: any = new MatTableDataSource<any>();
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
 
