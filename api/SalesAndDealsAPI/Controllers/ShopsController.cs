@@ -173,7 +173,5 @@ namespace SalesAndDealsAPI.Controllers
             return NoContent();
         }
 
-
-
     }
 }

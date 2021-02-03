@@ -2,19 +2,19 @@
     <mat-tab-group animationDuration="0ms">
         <mat-tab label="To do">
             <ng-template matTabContent>
-                to do scrapers
+                <app-todo-scrapers></app-todo-scrapers>
             </ng-template>
         </mat-tab>
         
         <mat-tab label="Waiting for execution">
             <ng-template matTabContent>
-                waiting
+                <app-wait-execution-scrapers></app-wait-execution-scrapers>
             </ng-template>
         </mat-tab>
         
         <mat-tab label="Success">
             <ng-template matTabContent>
-                success
+                <app-success-scrapers></app-success-scrapers>
             </ng-template>
         </mat-tab>
       </mat-tab-group>

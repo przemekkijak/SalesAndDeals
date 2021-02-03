@@ -22,6 +22,8 @@ export class FetchService {
     return this.http.get(`/api/results/forShop/${shopId}`);
   }
 
+  // notes
+
   getNotesForShop(shopId: number) {
     return this.http.get(`/api/shopNotes/getNotesForShop/${shopId}`); 
   }
@@ -34,8 +36,14 @@ export class FetchService {
     return this.http.get('/api/shopNotes/')
   }
 
-
+  // executions 
   getExecutionsForShop(shopId: number) {
     return this.http.get(`/api/executions/${shopId}`);
   }
+
+  //scrapers view 
+  getScrapersTodo(userId: number) {
+    return this.http.get(`/api/scrapers/todo/${userId}`);
+  }
+
 }

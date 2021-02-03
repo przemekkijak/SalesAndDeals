@@ -39,6 +39,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatTabsModule} from '@angular/material/tabs';
+import { TodoScrapersComponent } from './_components/scrapers/my-scrapers/todo-scrapers/todo-scrapers.component';
+import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrapers/wait-execution-scrapers/wait-execution-scrapers.component';
+import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
 
 
 
@@ -55,7 +58,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     ScrapersComponent,
     MyScrapersComponent,
     FailingsComponent,
-    NoofferComponent
+    NoofferComponent,
+    TodoScrapersComponent,
+    WaitExecutionScrapersComponent,
+    SuccessScrapersComponent
   ],
   imports: [
     BrowserModule,
