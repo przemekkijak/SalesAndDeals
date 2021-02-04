@@ -2,13 +2,13 @@
         <button mat-button [matMenuTriggerFor]="actions">Actions</button>
         <mat-menu #actions="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="assignTo" *ngIf="user.role == 'admin'">Assign to</button>
-            <button mat-menu-item>Assign to me</button>
+            <button mat-menu-item *ngIf="assignedTo == 0">Assign to me</button>
             <button mat-menu-item [matMenuTriggerFor]="markAs">Mark as</button>
         </mat-menu>
 
         <mat-menu #assignTo="matMenu">
             <ng-container *ngFor="let user of users">
-                <button mat-menu-item [value]="user.id" *ngIf="user.role == 'scraper'">{{user.username}}</button>
+                <button (click)="assignToUser(user)" mat-menu-item *ngIf="user.role == 'scraper'">{{user.username}}</button>
             </ng-container>
         </mat-menu>
 

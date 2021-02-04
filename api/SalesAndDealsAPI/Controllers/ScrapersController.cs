@@ -37,6 +37,33 @@ namespace SalesAndDealsAPI.Controllers
             return result;
         }
 
+        [HttpPut("assignTo/{userId}/{shopId}")]
+        public async Task<IActionResult> AssignScraperTo(int userId, int shopId)
+        {
+                var updatedShop = new Shops()
+                {
+                    AssignedTo = userId,
+                    Id = shopId
+                };
+                _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ShopsExists(shopId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return NoContent();
+            }
+
         private bool ShopsExists(int id)
         {
             return _context.Shops.Any(e => e.Id == id);

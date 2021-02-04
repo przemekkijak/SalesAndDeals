@@ -51,4 +51,9 @@ export class FetchService {
     return this.http.get(`/api/scrapers/todo/${userId}`);
   }
 
+  // shop actions
+  assignTo(userId: number, shopId: number) {
+    return this.http.put(`/api/scrapers/assignTo/${userId}/${shopId}`, {});
+  }
+
 }

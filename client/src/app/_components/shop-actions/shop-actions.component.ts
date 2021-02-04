@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FetchService } from 'src/app/_services/fetch.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import {MatMenuItem} from '@angular/material/menu';
 
 @Component({
   selector: 'app-shop-actions',
@@ -19,6 +20,9 @@ export class ShopActionsComponent implements OnInit {
   users = this.tokenStorage.getUsers();
 
 
+  assignToUser(user: MatMenuItem) {
+    this.fetch.assignTo(user['id'], this.shopId).subscribe();
+  }
 
   ngOnInit(): void {
   }

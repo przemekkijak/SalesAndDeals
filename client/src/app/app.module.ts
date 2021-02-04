@@ -19,7 +19,9 @@ import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrap
 import {FailingsComponent} from './_components/scrapers/failings/failings.component';
 import {NoofferComponent} from './_components/scrapers/nooffer/nooffer.component';
 import { ShopActionsComponent } from './_components/shop-actions/shop-actions.component';
-
+import { TodoScrapersComponent } from './_components/scrapers/my-scrapers/todo-scrapers/todo-scrapers.component';
+import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrapers/wait-execution-scrapers/wait-execution-scrapers.component';
+import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -41,9 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatTabsModule} from '@angular/material/tabs';
-import { TodoScrapersComponent } from './_components/scrapers/my-scrapers/todo-scrapers/todo-scrapers.component';
-import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrapers/wait-execution-scrapers/wait-execution-scrapers.component';
-import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
+
 
 
 
