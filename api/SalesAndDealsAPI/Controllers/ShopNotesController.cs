@@ -32,7 +32,8 @@ namespace SalesAndDealsAPI.Controllers
                 string countryCode = (string) await _context.Countries.Where(c => c.CountryId.Equals(shopData.CountryId)).Select(s => s.CountryCode).FirstOrDefaultAsync();
                 ShopNotesDTO noteDTO = new ShopNotesDTO(note)
                 {
-                    Shop = $"{countryCode}/{shopData.Name}"
+                    Shop = $"{countryCode}/{shopData.Name}",
+                    RobotState = shopData.RobotState
                 };
                 resultNotes.Add(noteDTO);
             }

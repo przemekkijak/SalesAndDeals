@@ -18,6 +18,8 @@ import {ScrapersComponent} from './_components/scrapers/scrapers.component';
 import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component'; 
 import {FailingsComponent} from './_components/scrapers/failings/failings.component';
 import {NoofferComponent} from './_components/scrapers/nooffer/nooffer.component';
+import { ShopActionsComponent } from './_components/shop-actions/shop-actions.component';
+
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -61,7 +63,8 @@ import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/suc
     NoofferComponent,
     TodoScrapersComponent,
     WaitExecutionScrapersComponent,
-    SuccessScrapersComponent
+    SuccessScrapersComponent,
+    ShopActionsComponent
   ],
   imports: [
     BrowserModule,

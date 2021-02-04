@@ -15,6 +15,7 @@ namespace SalesAndDealsAPI.Models
         public string Contents { get; set; }
         public DateTime CreatedAt { get; set; }
         public string ReadedBy { get; set; }
+        public string RobotState { get; set; }
 
         public ShopNotesDTO(ShopNotes note)
         {

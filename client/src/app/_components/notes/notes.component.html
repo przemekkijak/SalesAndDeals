@@ -26,26 +26,16 @@
                 <td mat-cell *matCellDef="let note"><button mat-button (click)="openNotes(note.shopId)">All notes</button></td>
             </ng-container>
 
-            <ng-container matColumnDef="assignTo">
+            <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let note">
-                    <button mat-button [matMenuTriggerFor]="assign">Assign to</button>
+                    <!-- <button mat-button [matMenuTriggerFor]="assign">Assign to</button>
                     <mat-menu #assign="matMenu">
                         <button mat-menu-item>Przemek</button>
                         <button mat-menu-item>Maciek</button>
                         <button mat-menu-item>Karolina</button>
-                    </mat-menu>
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="markAs">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let note">
-                    <button mat-button [matMenuTriggerFor]="mark">Mark shop as</button>
-                    <mat-menu #mark="matMenu">
-                        <button mat-menu-item>No offer</button>
-                        <button mat-menu-item>Problem with website</button>
-                    </mat-menu>
+                    </mat-menu> -->
+                    <app-shop-actions [shopId]="note.shopId"></app-shop-actions>
                 </td>
             </ng-container>
 
