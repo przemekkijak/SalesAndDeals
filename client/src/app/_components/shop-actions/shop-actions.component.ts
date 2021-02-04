@@ -16,6 +16,7 @@ export class ShopActionsComponent implements OnInit {
   @Input() robotState: string;
 
   userRole = this.tokenStorage.getUser().role;
+  users = this.tokenStorage.getUsers();
 
 
 

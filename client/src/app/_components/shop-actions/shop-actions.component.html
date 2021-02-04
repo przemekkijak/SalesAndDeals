@@ -7,11 +7,9 @@
         </mat-menu>
 
         <mat-menu #assignTo="matMenu">
-            <button mat-menu-item>Przemek</button>
-            <button mat-menu-item>Maciek</button>
-            <button mat-menu-item>Karolina</button>
-            <button mat-menu-item>Iza</button>
-            <button mat-menu-item>Bartek</button>
+            <ng-container *ngFor="let user of users">
+                <button mat-menu-item [value]="user.id" *ngIf="user.role != 'admin'">{{user.username}}</button>
+            </ng-container>
         </mat-menu>
 
         <mat-menu #markAs="matMenu">

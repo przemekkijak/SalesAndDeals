@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../_services/auth.service';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {Router} from '@angular/router';
+import { FetchService } from 'src/app/_services/fetch.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ isLoginFailed = false;
 errorMessage = "";
 username = "";
 
-  constructor(private auth: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(private auth: AuthService, private tokenStorage: TokenStorageService, private router: Router, private fetch: FetchService) { }
 
   ngOnInit(): void {
     if(this.tokenStorage.getToken()) {
@@ -41,6 +42,15 @@ username = "";
         this.router.navigate(['/dashboards'])
         .then(() => {
           window.location.reload();
+        })
+        .then(() => {
+          var role = this.tokenStorage.getUser().role;
+          console.log(role);
+          if(role == "admin") {
+            this.fetch.getUsers().subscribe(res => {
+              this.tokenStorage.saveUsers(res);
+            })
+          }
         })
       },
       err => {

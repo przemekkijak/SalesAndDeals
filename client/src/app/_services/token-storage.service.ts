@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const USERS_LIST = 'users';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,18 @@ export class TokenStorageService {
       return JSON.parse(user);
     }
     return {};
+  }
+
+  // users list for admin
+  public getUsers(): any {
+    const users = window.sessionStorage.getItem(USERS_LIST);
+    if(users) {
+      return JSON.parse(users);
+    }
+    return {};
+  }
+
+  public saveUsers(users: any) {
+    window.sessionStorage.setItem(USERS_LIST, JSON.stringify(users));
   }
 }

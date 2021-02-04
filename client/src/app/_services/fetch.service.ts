@@ -10,6 +10,11 @@ export class FetchService {
 
   constructor(private http: HttpClient) { }
 
+  // get users (for admin only)
+  getUsers() {
+    return this.http.get('/api/users');
+  }
+
   getCountries() {
     return this.http.get('/api/countries');
   }
