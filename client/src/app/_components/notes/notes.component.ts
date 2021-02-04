@@ -14,11 +14,12 @@ import {MatPaginator} from '@angular/material/paginator';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  displayedColumns: string[] = ['shop','noteInfo','noteContent','fullNotes','assignTo', 'markAs'];
+  displayedColumns: string[] = ['shop','noteInfo','noteAuthor','noteContent','fullNotes','assignTo', 'markAs'];
   notesData: any = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  
 
 
   constructor(private fetch: FetchService, private dialog: MatDialog) { }

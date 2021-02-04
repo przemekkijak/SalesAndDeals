@@ -10,7 +10,7 @@ namespace SalesAndDealsAPI.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string LastExecuted { get; set; }
+        public DateTime? LastExecuted { get; set; }
         public string ExecutionState { get; set; }
         public string DexiRun { get; set; }
         public string DexiRobot { get; set; }

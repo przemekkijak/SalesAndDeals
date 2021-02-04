@@ -13,7 +13,7 @@ namespace SalesAndDealsAPI.Models
         public string Name { get; set; }
         public int CountryId { get; set; }
         public int ActiveOffers { get; set; }
-        public string LastExecuted { get; set; }
+        public DateTime? LastExecuted { get; set; }
         public string ExecutionState { get; set; }
         public int AssignedTo { get; set; }
         public string DexiRun { get; set; }

@@ -13,7 +13,6 @@ namespace SalesAndDealsAPI.Models
         public string Shop { get; set; }
         public string Author { get; set; }
         public string Contents { get; set; }
-        [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
         public string ReadedBy { get; set; }
 

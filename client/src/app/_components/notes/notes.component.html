@@ -1,14 +1,19 @@
 <div class="container">
     <div class="tableContainer">
-        <table mat-table [dataSource]="notesData">
+        <table mat-table [dataSource]="notesData" matSort>
             <ng container matColumnDef="shop">
                 <th mat-header-cell *matHeaderCellDef >Shop</th>
                 <td mat-cell *matCellDef="let note">{{note.shop}}</td>
             </ng>
 
             <ng-container matColumnDef="noteInfo">
-                <th mat-header-cell *matHeaderCellDef>Info</th>
-                <td mat-cell *matCellDef="let note">{{note.createdAt | date: 'mediumDate'}} - {{note.author}}</td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Info</th>
+                <td mat-cell *matCellDef="let note">{{note.createdAt | date: 'dd MMM HH:mm'}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="noteAuthor">
+                <th mat-header-cell *matHeaderCellDef>Author</th>
+                <td mat-cell *matCellDef="let note">{{note.author}}</td>
             </ng-container>
 
             <ng-container matColumnDef="noteContent">
