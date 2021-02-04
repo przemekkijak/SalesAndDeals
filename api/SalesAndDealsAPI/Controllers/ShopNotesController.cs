@@ -33,7 +33,8 @@ namespace SalesAndDealsAPI.Controllers
                 ShopNotesDTO noteDTO = new ShopNotesDTO(note)
                 {
                     Shop = $"{countryCode}/{shopData.Name}",
-                    RobotState = shopData.RobotState
+                    RobotState = shopData.RobotState,
+                    AssignedTo = shopData.AssignedTo
                 };
                 resultNotes.Add(noteDTO);
             }

@@ -16,6 +16,7 @@ namespace SalesAndDealsAPI.Models
         public DateTime CreatedAt { get; set; }
         public string ReadedBy { get; set; }
         public string RobotState { get; set; }
+        public int AssignedTo { get; set; }
 
         public ShopNotesDTO(ShopNotes note)
         {

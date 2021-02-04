@@ -1,8 +1,24 @@
 <ng-container>
-        <button mat-button [matMenuTriggerFor]="assign">Actions</button>
-        <mat-menu #assign="matMenu">
+        <button mat-button [matMenuTriggerFor]="actions">Actions</button>
+        <mat-menu #actions="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="assignTo">Assign to</button>
+            <button mat-menu-item>Assign to me</button>
+            <button mat-menu-item [matMenuTriggerFor]="markAs">Mark as</button>
+        </mat-menu>
+
+        <mat-menu #assignTo="matMenu">
             <button mat-menu-item>Przemek</button>
             <button mat-menu-item>Maciek</button>
             <button mat-menu-item>Karolina</button>
+            <button mat-menu-item>Iza</button>
+            <button mat-menu-item>Bartek</button>
+        </mat-menu>
+
+        <mat-menu #markAs="matMenu">
+            <button mat-menu-item>Executed</button>
+            <button mat-menu-item>Can't do this</button>
+            <button mat-menu-item>Success</button>
+            <button mat-menu-item>No offer</button>
+            <button mat-menu-item>Still no offer</button>
         </mat-menu>
 </ng-container>

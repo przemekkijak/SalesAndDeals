@@ -16,6 +16,13 @@ namespace SalesAndDealsAPI.Models
             this.Username = username;
             this.Role = role;
         }
+
+        public UserDTO(User user)
+        {
+            this.Id = user.Id;
+            this.Username = user.Username;
+            this.Role = user.Role;
+        }
     }
 
 }

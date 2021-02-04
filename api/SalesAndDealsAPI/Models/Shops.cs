@@ -23,6 +23,7 @@ namespace SalesAndDealsAPI.Models
         public int NotesAmount { get; set; }
         public string InputUrl { get; set; }
         public string RobotState { get; set; }
+        public string LastModifiedByName { get; set; }
 
 
     }

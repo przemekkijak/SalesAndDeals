@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FetchService } from 'src/app/_services/fetch.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-shop-actions',
@@ -7,9 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ShopActionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService, private fetch: FetchService) { }
 
   @Input() shopId: number;
+  @Input() assignedTo: number;
+  @Input() robotState: string;
+
+  userRole = this.tokenStorage.getUser().role;
+
+
 
   ngOnInit(): void {
   }

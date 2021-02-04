@@ -15,6 +15,9 @@ namespace SalesAndDealsAPI.Models
         public string DexiRun { get; set; }
         public string DexiRobot { get; set; }
         public string InputUrl { get; set; }
+        public int AssignedTo { get; set; }
+        public string RobotState { get; set; }
+        public string LastModifiedByName { get; set; }
 
         public ShopsDTO(Shops shop)
         {
@@ -24,6 +27,9 @@ namespace SalesAndDealsAPI.Models
             this.DexiRun = shop.DexiRun;
             this.DexiRobot = shop.DexiRobot;
             this.InputUrl = shop.InputUrl;
+            this.AssignedTo = shop.AssignedTo;
+            this.RobotState = shop.RobotState;
+            this.LastModifiedByName = shop.LastModifiedByName;
         }
 
     }

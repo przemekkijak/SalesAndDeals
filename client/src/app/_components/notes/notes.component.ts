@@ -34,7 +34,6 @@ export class NotesComponent implements OnInit {
     this.fetch.getAllNotes().subscribe(res => {
       this.notesData = res;
       this.notesData.sort((a,b) => a.createdAt.localeCompare(b.createdAt)).reverse();
-      console.log(this.notesData);
     });
   }
 

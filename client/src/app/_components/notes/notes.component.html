@@ -29,13 +29,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let note">
-                    <!-- <button mat-button [matMenuTriggerFor]="assign">Assign to</button>
-                    <mat-menu #assign="matMenu">
-                        <button mat-menu-item>Przemek</button>
-                        <button mat-menu-item>Maciek</button>
-                        <button mat-menu-item>Karolina</button>
-                    </mat-menu> -->
-                    <app-shop-actions [shopId]="note.shopId"></app-shop-actions>
+                    <app-shop-actions [shopId]="note.shopId" [assignedTo]="note.assignedTo" [robotState]="note.robotState"></app-shop-actions>
                 </td>
             </ng-container>
 

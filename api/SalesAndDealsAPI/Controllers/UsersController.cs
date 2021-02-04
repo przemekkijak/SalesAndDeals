@@ -24,9 +24,16 @@ namespace SalesAndDealsAPI.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            var users = await _context.Users.ToListAsync();
+            List<UserDTO> usersDTO = new List<UserDTO>();
+            foreach(User user in users)
+            {
+                var userDTO = new UserDTO(user);
+                usersDTO.Add(userDTO);
+            }
+            return usersDTO;
         }
 
         // GET: api/Users/5
