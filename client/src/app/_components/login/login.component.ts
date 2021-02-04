@@ -39,18 +39,14 @@ username = "";
         this.username = data.username;
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/dashboards'])
+        this.router.navigate(['/scrapers'])
         .then(() => {
           window.location.reload();
         })
         .then(() => {
-          var role = this.tokenStorage.getUser().role;
-          console.log(role);
-          if(role == "admin") {
             this.fetch.getUsers().subscribe(res => {
               this.tokenStorage.saveUsers(res);
             })
-          }
         })
       },
       err => {

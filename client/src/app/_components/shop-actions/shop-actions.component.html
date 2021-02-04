@@ -1,22 +1,24 @@
 <ng-container>
         <button mat-button [matMenuTriggerFor]="actions">Actions</button>
         <mat-menu #actions="matMenu">
-            <button mat-menu-item [matMenuTriggerFor]="assignTo">Assign to</button>
+            <button mat-menu-item [matMenuTriggerFor]="assignTo" *ngIf="user.role == 'admin'">Assign to</button>
             <button mat-menu-item>Assign to me</button>
             <button mat-menu-item [matMenuTriggerFor]="markAs">Mark as</button>
         </mat-menu>
 
         <mat-menu #assignTo="matMenu">
             <ng-container *ngFor="let user of users">
-                <button mat-menu-item [value]="user.id" *ngIf="user.role != 'admin'">{{user.username}}</button>
+                <button mat-menu-item [value]="user.id" *ngIf="user.role == 'scraper'">{{user.username}}</button>
             </ng-container>
         </mat-menu>
 
         <mat-menu #markAs="matMenu">
-            <button mat-menu-item>Executed</button>
-            <button mat-menu-item>Can't do this</button>
-            <button mat-menu-item>Success</button>
-            <button mat-menu-item>No offer</button>
-            <button mat-menu-item>Still no offer</button>
+            <ng-container *ngIf="assignedTo == user.id">
+                <button mat-menu-item>Executed</button>
+                <button mat-menu-item>Can't do this</button>
+                <button mat-menu-item>Success</button>
+            </ng-container>
+            <button mat-menu-item *ngIf="robotState !='NOOFFER'">No offer</button>
+            <button mat-menu-item *ngIf="robotState == 'NOOFFER'">Still no offer</button>
         </mat-menu>
 </ng-container>
