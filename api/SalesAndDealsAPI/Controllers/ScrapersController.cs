@@ -61,7 +61,7 @@ namespace SalesAndDealsAPI.Controllers
                         throw;
                     }
                 }
-                return NoContent();
+            return Ok();
             }
 
         private bool ShopsExists(int id)
