@@ -2,7 +2,7 @@
         <button mat-button [matMenuTriggerFor]="actions">Actions</button>
         <mat-menu #actions="matMenu">
             <button mat-menu-item [matMenuTriggerFor]="assignTo" *ngIf="user.role == 'admin'">Assign to</button>
-            <button mat-menu-item *ngIf="assignedTo == 0">Assign to me</button>
+            <button mat-menu-item *ngIf="assignedTo == 0" (click)="assignToMe()">Assign to me</button>
             <button mat-menu-item [matMenuTriggerFor]="markAs">Mark as</button>
         </mat-menu>
 

@@ -28,6 +28,12 @@ export class ShopActionsComponent implements OnInit {
     });
   };
 
+  assignToMe() {
+    this.fetch.assignTo(this.user['id'], this.shopId).subscribe(() => {
+      this.showMessage('Przypisano scraper do siebie', 'Zamknij');
+    })
+  }
+
   showMessage(message: string, action: string) {
     this.snackBar.open(message, action, {duration: 2000});
   }
