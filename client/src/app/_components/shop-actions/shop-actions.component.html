@@ -21,10 +21,10 @@
 
 <mat-menu #markAs="matMenu">
     <ng-container *ngIf="assignedTo == user.id">
-        <button mat-menu-item>Executed</button>
-        <button mat-menu-item>Can't do this</button>
-        <button mat-menu-item>Success</button>
+        <button (click)="markAsExecuted()" value="executed" mat-menu-item>Executed</button>
+        <button (click)="markAsCantDo()" mat-menu-item>Can't do this</button>
+        <button (click)="markAsSuccess()" mat-menu-item>Success</button>
     </ng-container>
-        <button mat-menu-item *ngIf="robotState !='NOOFFER' && assignedTo == 0" >No offer</button>
-        <button mat-menu-item *ngIf="robotState == 'NOOFFER'">Still no offer</button>
+        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="robotState !='NOOFFER' && assignedTo == 0" >No offer</button>
+        <button (click)="markAsStillNoOffer()" mat-menu-item *ngIf="robotState == 'NOOFFER'">Still no offer</button>
 </mat-menu>

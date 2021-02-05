@@ -24,6 +24,7 @@ namespace SalesAndDealsAPI.Models
         public string InputUrl { get; set; }
         public string RobotState { get; set; }
         public string LastModifiedByName { get; set; }
+        public DateTime? LastChanged { get; set; }
 
 
     }

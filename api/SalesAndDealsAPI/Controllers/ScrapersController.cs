@@ -37,15 +37,19 @@ namespace SalesAndDealsAPI.Controllers
             return result;
         }
 
+
+        //scrapers actions
         [HttpPut("assignTo/{userId}/{shopId}")]
         public async Task<IActionResult> AssignScraperTo(int userId, int shopId)
         {
                 var updatedShop = new Shops()
                 {
                     AssignedTo = userId,
-                    Id = shopId
+                    Id = shopId,
+                    RobotState = "TODO"
                 };
                 _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
+                _context.Entry(updatedShop).Property("RobotState").IsModified = true;
                 try
                 {
                     await _context.SaveChangesAsync();
@@ -63,6 +67,47 @@ namespace SalesAndDealsAPI.Controllers
                 }
             return Ok();
             }
+
+        [HttpPut("changeState/{shopId}/{state}")]
+        public async Task<IActionResult> ChangeScraperState(int shopId, string state)
+        {
+            var updatedShop = new Shops()
+            {
+                Id = shopId
+            };
+            switch(state)
+            {
+                case "EXECUTED" or "SUCCESS":
+                    updatedShop.RobotState = state;
+                    _context.Entry(updatedShop).Property("RobotState").IsModified = true;
+                    break;
+                case "CANTDOTHIS" or "NOOFFER":
+                    updatedShop.RobotState = state;
+                    updatedShop.AssignedTo = 0;
+                    _context.Entry(updatedShop).Property("RobotState").IsModified = true;
+                    _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
+                    break;
+                case "STILLNOOFFER":
+                    updatedShop.LastChanged = DateTime.Now;
+                    _context.Entry(updatedShop).Property("LastChanged").IsModified = true;
+                    break;
+            }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if(!ShopsExists(shopId))
+                {
+                    return NotFound();
+                } else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+        }
 
         private bool ShopsExists(int id)
         {

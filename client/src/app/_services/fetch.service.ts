@@ -55,5 +55,8 @@ export class FetchService {
   assignTo(userId: number, shopId: number) {
     return this.http.put(`/api/scrapers/assignTo/${userId}/${shopId}`, {});
   }
+  changeState(shopId: number, state: string) {
+    return this.http.put(`/api/scrapers/changeState/${shopId}/${state}`, {});
+  }
 
 }
