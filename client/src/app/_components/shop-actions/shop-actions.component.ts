@@ -3,6 +3,8 @@ import { FetchService } from 'src/app/_services/fetch.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import {MatMenuItem} from '@angular/material/menu';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ShopNotesComponent } from '../shop-notes/shop-notes.component';
 
 @Component({
   selector: 'app-shop-actions',
@@ -11,7 +13,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ShopActionsComponent implements OnInit {
 
-  constructor(private tokenStorage: TokenStorageService, private fetch: FetchService, private snackBar: MatSnackBar) { }
+  constructor(private tokenStorage: TokenStorageService, private fetch: FetchService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   @Input() shopId: number;
   @Input() assignedTo: number;
@@ -20,6 +22,10 @@ export class ShopActionsComponent implements OnInit {
   user = this.tokenStorage.getUser();
   users = this.tokenStorage.getUsers();
 
+  openNotes() {
+    this.dialog.open(ShopNotesComponent, {data: {shopId: this.shopId},
+    });
+  }
 
   assignToUser(user: MatMenuItem) {
     var userData = this.users.filter(u => u.id == user['id']);

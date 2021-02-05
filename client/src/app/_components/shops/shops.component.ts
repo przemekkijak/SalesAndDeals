@@ -6,6 +6,7 @@ import { ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort'; 
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ShopNotesComponent} from '../shop-notes/shop-notes.component';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 
 
@@ -16,20 +17,22 @@ import {ShopNotesComponent} from '../shop-notes/shop-notes.component';
 })
 
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers', 'notes','inputUrl', 'dexiRobot'];
+  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','inputUrl', 'dexiRobot', 'actions'];
   countries: any = [];
   shops: any = [];
   dataSource = new MatTableDataSource<any>();
   selectedCountry: number = 0;
+  users = this.tokenStorage.getUsers();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private fetch: FetchService, private dialog: MatDialog) { }
+  constructor(private fetch: FetchService, private dialog: MatDialog, private tokenStorage: TokenStorageService) { }
   
   changeCountry() {
     this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
       this.shops = res;
+      console.log(this.shops);
       this.dataSource.data = this.shops;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -37,9 +40,13 @@ export class ShopsComponent implements OnInit {
     })
   }
 
-  openNotes(shopId: number) {
-    this.dialog.open(ShopNotesComponent, {data: {shopId: shopId},
-    });
+  getUsername(userId: number) {
+    if(userId == 0) {
+      return 'Not assigned';
+    } else {
+    var user = this.users.filter(u => u.id == userId);
+    return user[0]['username'];
+    }
   }
 
   ngOnInit(): void {

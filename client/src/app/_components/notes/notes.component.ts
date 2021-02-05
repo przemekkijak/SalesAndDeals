@@ -14,7 +14,7 @@ import {MatPaginator} from '@angular/material/paginator';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  displayedColumns: string[] = ['shop','noteInfo','noteAuthor','noteContent','fullNotes','actions'];
+  displayedColumns: string[] = ['shop','noteInfo','noteAuthor','noteContent','actions'];
   notesData: any = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

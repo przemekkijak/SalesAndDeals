@@ -1,5 +1,9 @@
 <ng-container>
     
+    <button mat-button matTooltip="Notes" (click)="openNotes()">
+        <mat-icon>inbox</mat-icon>
+    </button>
+
     <button mat-button *ngIf="user.role == 'admin'" matTooltip="Assign scraper" [matMenuTriggerFor]="assignTo">
         <mat-icon aria-hidden="false">manage_accounts</mat-icon>
     </button>
