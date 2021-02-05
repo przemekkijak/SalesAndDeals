@@ -1,20 +1,11 @@
-<ng-container>
-    
-    <button mat-button matTooltip="Notes" (click)="openNotes()">
-        <mat-icon>inbox</mat-icon>
+<ng-container> 
+    <button mat-button matTooltip="Notes" (click)="openNotes()"><mat-icon>inbox</mat-icon></button>
+    <button mat-button *ngIf="user.role == 'admin'" matTooltip="Assign scraper" [matMenuTriggerFor]="assignTo"><mat-icon>manage_accounts</mat-icon></button>
+    <button mat-button [matMenuTriggerFor]="markAs" matTooltip="Mark as" *ngIf="(parent == 'shops' || parent == 'scrapers') && (assignedTo == 0 || assignedTo == user.id)">
+        <mat-icon *ngIf="assignedTo == 0">check_circle</mat-icon>
+        <mat-icon *ngIf="assignedTo == user.id">check_circle_outline</mat-icon>
     </button>
-
-    <button mat-button *ngIf="user.role == 'admin'" matTooltip="Assign scraper" [matMenuTriggerFor]="assignTo">
-        <mat-icon aria-hidden="false">manage_accounts</mat-icon>
-    </button>
-    
-    <button mat-button [matMenuTriggerFor]="markAs" matTooltip="Mark as">
-        <mat-icon aria-hidden="false">offline_pin</mat-icon>
-    </button>
-
-    <button mat-button *ngIf="assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me">
-        <mat-icon>build</mat-icon>
-    </button>
+    <button mat-button *ngIf="assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me"><mat-icon>build</mat-icon></button>
 </ng-container>
 
 <mat-menu #assignTo="matMenu">
@@ -29,6 +20,6 @@
         <button (click)="markAsCantDo()" mat-menu-item>Can't do this</button>
         <button (click)="markAsSuccess()" mat-menu-item>Success</button>
     </ng-container>
-        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="robotState !='NOOFFER' && assignedTo == 0" >No offer</button>
+        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="robotState !='NOOFFER' && assignedTo == 0 || assignedTo == user.id" >No offer</button>
         <button (click)="markAsStillNoOffer()" mat-menu-item *ngIf="robotState == 'NOOFFER'">Still no offer</button>
 </mat-menu>

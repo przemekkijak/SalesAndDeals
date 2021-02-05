@@ -58,7 +58,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let shop">
-                    <app-shop-actions [shopId]="shop.id" [assignedTo]="shop.assignedTo" [robotState]="shop.robotState"></app-shop-actions>
+                    <app-shop-actions [shopId]="shop.id" [assignedTo]="shop.assignedTo" [robotState]="shop.robotState" parent="shops"></app-shop-actions>
                 </td>
             </ng-container>
 
