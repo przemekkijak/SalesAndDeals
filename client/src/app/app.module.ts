@@ -43,7 +43,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 
@@ -87,7 +89,9 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     MatCardModule,
     MatMenuModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]
