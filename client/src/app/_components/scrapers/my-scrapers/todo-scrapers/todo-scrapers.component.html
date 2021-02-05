@@ -13,44 +13,31 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="notes">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Notes</th>
-                <td mat-cell *matCellDef="let scrapers">
-                    <!-- <button (click)="openNotes(scrapers.id)" mat-button>Notes ({{scrapers.notesAmount}})</button> -->
-                </td>
-            </ng-container>
-
             <ng-container matColumnDef="inputUrl">
-                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let scrapers">
                     <a mat-button href="{{scrapers.inputUrl}}" target="_blank">Link</a>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="dexiRobot">
-                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let scrapers">
                     <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/editor/scraper" target="_blank">Edit robot</a>
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="dexiExecutions">
-                <td mat-header-cell *matHeaderCellDef mat-sort-header></td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let scrapers">
                     <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/runs/{{scrapers.dexiRun}}/edit/executions" target="_blank">Executions</a>
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="markAs">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let note">
-                    <button mat-button [matMenuTriggerFor]="mark">Mark shop as</button>
-                    <mat-menu #mark="matMenu">
-                        <button mat-menu-item>Executed</button>
-                        <button mat-menu-item>No offer</button>
-                        <button mat-menu-item>Problem with website</button>
-                        <button mat-menu-item>Can't do this</button>
-                    </mat-menu>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let scrapers">
+                    <app-shop-actions [shopId]="scrapers.id" [assignedTo]="scrapers.assignedTo" [robotState]="scrapers.robotState" parent="scrapers"></app-shop-actions>
                 </td>
             </ng-container>
 
