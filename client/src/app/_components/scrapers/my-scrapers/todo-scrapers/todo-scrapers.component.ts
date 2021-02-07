@@ -22,6 +22,7 @@ export class TodoScrapersComponent implements OnInit {
   ngOnInit(): void {
     this.fetch.getScrapers(this.tokenStorage.getUser().id, "TODO").subscribe(res => {
       this.scrapers = res;
+      this.scrapers.sort((a,b) => a.name.localeCompare(b.name));
       this.dataSource = this.scrapers;
     })
   }

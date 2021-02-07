@@ -22,6 +22,8 @@ import { ShopActionsComponent } from './_components/shop-actions/shop-actions.co
 import { TodoScrapersComponent } from './_components/scrapers/my-scrapers/todo-scrapers/todo-scrapers.component';
 import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrapers/wait-execution-scrapers/wait-execution-scrapers.component';
 import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
+import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component'; 
+
 
 // helpers
 import {AuthGuard} from './_helpers/auth.guard';
@@ -45,8 +47,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatIconModule} from '@angular/material/icon'; 
-import {MatTooltip, MatTooltipModule} from '@angular/material/tooltip'; 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import { MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 
@@ -68,7 +69,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     TodoScrapersComponent,
     WaitExecutionScrapersComponent,
     SuccessScrapersComponent,
-    ShopActionsComponent
+    ShopActionsComponent,
+    ScrapersAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -92,8 +94,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatTabsModule,
     MatSnackBarModule,
     MatIconModule,
-    MatTooltipModule,
-    MatProgressSpinnerModule
+    MatTooltipModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]

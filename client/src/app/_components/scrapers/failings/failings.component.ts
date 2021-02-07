@@ -21,6 +21,7 @@ export class FailingsComponent implements OnInit {
   ngOnInit(): void {
     this.fetch.getScrapers(0, "FAILED").subscribe(res => {
       this.scrapers = res;
+      this.scrapers.sort((a,b) => a.lastExecuted.localeCompare(b.lastExecuted)).reverse();
       this.dataSource = this.scrapers;
     })
   }

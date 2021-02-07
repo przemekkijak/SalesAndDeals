@@ -1,18 +1,29 @@
 <div class="container">
-    <mat-tab-group animationDuration="0ms">
-        <mat-tab label="My scrapers" *ngIf="user.role == 'scraper'">
-          <app-my-scrapers></app-my-scrapers>
-        </mat-tab>
-        
-        <mat-tab label="Failings">
-          <app-failings></app-failings>
-        </mat-tab>
-        
-        <mat-tab label="No offer">
-          <app-nooffer></app-nooffer>
-        </mat-tab>
-      </mat-tab-group>
-      
+  <mat-tab-group animationDuration="0ms">
 
+    <mat-tab label="Admin" *ngIf="user.role == 'admin'">
+      <ng-template matTabContent>
+        <app-scrapers-admin></app-scrapers-admin>
+      </ng-template>
+    </mat-tab>
 
+    <mat-tab label="My scrapers" *ngIf="user.role == 'scraper'">
+      <ng-template matTabContent>
+        <app-my-scrapers></app-my-scrapers>
+      </ng-template>
+    </mat-tab>
+        
+    <mat-tab label="Failings">
+      <ng-template matTabContent>
+        <app-failings></app-failings>
+      </ng-template>
+    </mat-tab>
+        
+    <mat-tab label="No offer">
+      <ng-template matTabContent>
+        <app-nooffer></app-nooffer>
+      </ng-template>
+    </mat-tab>
+
+  </mat-tab-group>
 </div>
