@@ -135,6 +135,10 @@ namespace SalesAndDealsAPI.Controllers
                 JObject res = JObject.Parse(response);
                 shop.LastExecuted = TimestampToDate.Parse((string)res.SelectToken("rows[0].finished"));
                 shop.ExecutionState = (string)res.SelectToken("rows[0].state");
+                if((shop.AssignedTo == 0 || shop.RobotState != "NOOFFER") && shop.ExecutionState == "FAILED")
+                {
+                    shop.RobotState = "FAILED";
+                }
 
                 try
                 {
