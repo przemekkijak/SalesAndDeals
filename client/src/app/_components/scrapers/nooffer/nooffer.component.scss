@@ -1,0 +1,17 @@
+.container {
+    padding: 5%;   
+    table {
+       width: 100%;
+       th {
+           width: 33%;
+       }
+       td {
+           .green{
+               color: green;
+           }
+           .red{
+               color: rgb(160, 18, 18);
+           }
+       }
+   }
+   }
