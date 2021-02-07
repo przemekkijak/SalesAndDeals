@@ -1,12 +1,16 @@
 <ng-container> 
+    <a mat-button matTooltip="Website" href="{{data.inputUrl}}" target="_blank"><mat-icon>explore</mat-icon></a>
     <button mat-button matTooltip="Notes" (click)="openNotes()"><mat-icon>inbox</mat-icon></button>
     <button mat-button *ngIf="user.role == 'admin'" matTooltip="Assign scraper" [matMenuTriggerFor]="assignTo"><mat-icon>manage_accounts</mat-icon></button>
-    <button mat-button [matMenuTriggerFor]="markAs" matTooltip="Mark as" *ngIf="(parent == 'shops' || parent == 'scrapers') && (assignedTo == 0 || assignedTo == user.id)">
-        <mat-icon *ngIf="assignedTo == 0">check_circle</mat-icon>
-        <mat-icon *ngIf="assignedTo == user.id">check_circle_outline</mat-icon>
+    <button mat-button [matMenuTriggerFor]="markAs" matTooltip="Mark as" *ngIf="(parent == 'shops' || parent == 'scrapers') && (data.assignedTo == 0 || data.assignedTo == user.id)">
+        <mat-icon *ngIf="data.assignedTo == 0">check_circle</mat-icon>
+        <mat-icon *ngIf="data.assignedTo == user.id">check_circle_outline</mat-icon>
     </button>
-    <button mat-button *ngIf="assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me"><mat-icon>build</mat-icon></button>
+    <button mat-button *ngIf="data.assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me"><mat-icon>build</mat-icon></button>
 </ng-container>
+
+
+<!-- menu -->
 
 <mat-menu #assignTo="matMenu">
     <ng-container *ngFor="let user of users">
@@ -15,11 +19,11 @@
 </mat-menu>
 
 <mat-menu #markAs="matMenu">
-    <ng-container *ngIf="assignedTo == user.id">
+    <ng-container *ngIf="data.assignedTo == user.id">
         <button (click)="markAsExecuted()" value="executed" mat-menu-item>Executed</button>
         <button (click)="markAsCantDo()" mat-menu-item>Can't do this</button>
         <button (click)="markAsSuccess()" mat-menu-item>Success</button>
     </ng-container>
-        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="robotState !='NOOFFER' && assignedTo == 0 || assignedTo == user.id" >No offer</button>
-        <button (click)="markAsStillNoOffer()" mat-menu-item *ngIf="robotState == 'NOOFFER'">Still no offer</button>
+        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="data.robotState !='NOOFFER' && data.assignedTo == 0 || data.assignedTo == user.id" >No offer</button>
+        <button (click)="markAsStillNoOffer()" mat-menu-item *ngIf="data.robotState == 'NOOFFER'">Still no offer</button>
 </mat-menu>

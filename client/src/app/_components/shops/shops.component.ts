@@ -17,7 +17,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','inputUrl', 'dexiRobot', 'actions'];
+  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','dexiRobot', 'actions'];
   countries: any = [];
   shops: any = [];
   dataSource = new MatTableDataSource<any>();
@@ -32,7 +32,6 @@ export class ShopsComponent implements OnInit {
   changeCountry() {
     this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
       this.shops = res;
-      console.log(this.shops);
       this.dataSource.data = this.shops;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;

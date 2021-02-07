@@ -11,7 +11,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
   styleUrls: ['./todo-scrapers.component.scss']
 })
 export class TodoScrapersComponent implements OnInit {
-  displayedColumns: string[] = ['name','lastExecuted','inputUrl','dexiRobot', 'dexiExecutions','actions'];
+  displayedColumns: string[] = ['name','lastExecuted','dexiRobot', 'dexiExecutions','actions'];
   scrapers: any = [];
   dataSource = new MatTableDataSource<any>();
 

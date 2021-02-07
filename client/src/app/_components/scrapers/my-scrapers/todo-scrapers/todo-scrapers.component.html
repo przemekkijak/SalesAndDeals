@@ -13,13 +13,6 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="inputUrl">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                <td mat-cell *matCellDef="let scrapers">
-                    <a mat-button href="{{scrapers.inputUrl}}" target="_blank">Link</a>
-                </td>
-            </ng-container>
-
             <ng-container matColumnDef="dexiRobot">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let scrapers">
@@ -37,7 +30,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let scrapers">
-                    <app-shop-actions [shopId]="scrapers.id" [assignedTo]="scrapers.assignedTo" [robotState]="scrapers.robotState" parent="scrapers"></app-shop-actions>
+                    <app-shop-actions [data]="scrapers" parent="scrapers"></app-shop-actions>
                 </td>
             </ng-container>
 

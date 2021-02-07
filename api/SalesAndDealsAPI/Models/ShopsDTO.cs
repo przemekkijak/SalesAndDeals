@@ -8,7 +8,7 @@ namespace SalesAndDealsAPI.Models
     public class ShopsDTO
     {
 
-        public int Id { get; set; }
+        public int ShopId { get; set; }
         public string Name { get; set; }
         public DateTime? LastExecuted { get; set; }
         public string ExecutionState { get; set; }
@@ -21,7 +21,7 @@ namespace SalesAndDealsAPI.Models
 
         public ShopsDTO(Shops shop)
         {
-            this.Id = shop.Id;
+            this.ShopId = shop.ShopId;
             this.LastExecuted = shop.LastExecuted;
             this.ExecutionState = shop.ExecutionState;
             this.DexiRun = shop.DexiRun;

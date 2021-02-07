@@ -28,7 +28,7 @@ namespace SalesAndDealsAPI.Controllers
             List<ShopNotesDTO> resultNotes = new List<ShopNotesDTO>();
             foreach(ShopNotes note in notes)
             {
-                var shopData = await _context.Shops.Where(s => s.Id.Equals(note.ShopId)).FirstOrDefaultAsync();
+                var shopData = await _context.Shops.Where(s => s.ShopId.Equals(note.ShopId)).FirstOrDefaultAsync();
                 string countryCode = (string) await _context.Countries.Where(c => c.CountryId.Equals(shopData.CountryId)).Select(s => s.CountryCode).FirstOrDefaultAsync();
                 ShopNotesDTO noteDTO = new ShopNotesDTO(note)
                 {

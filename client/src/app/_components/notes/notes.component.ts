@@ -15,25 +15,23 @@ import {MatPaginator} from '@angular/material/paginator';
 })
 export class NotesComponent implements OnInit {
   displayedColumns: string[] = ['shop','noteInfo','noteAuthor','noteContent','actions'];
-  notesData: any = new MatTableDataSource<any>();
+  notes: any = [];
+  notesData = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   
-
+  loaded = false;
 
   constructor(private fetch: FetchService, private dialog: MatDialog) { }
 
 
-  openNotes(shopId: number) {
-    this.dialog.open(ShopNotesComponent, {data: {shopId: shopId},
-    });
-  }
-
   ngOnInit(): void { 
     this.fetch.getAllNotes().subscribe(res => {
-      this.notesData = res;
-      this.notesData.sort((a,b) => a.createdAt.localeCompare(b.createdAt)).reverse();
+      this.notes = res;
+      this.notes.sort((a,b) => a.createdAt.localeCompare(b.createdAt)).reverse();
+      this.notesData.data = this.notes;
+      this.loaded = true;
     });
   }
 

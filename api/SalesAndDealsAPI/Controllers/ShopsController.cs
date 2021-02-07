@@ -50,7 +50,7 @@ namespace SalesAndDealsAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutShops(int id, Shops shops)
         {
-            if (id != shops.Id)
+            if (id != shops.ShopId)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace SalesAndDealsAPI.Controllers
             _context.Shops.Add(shops);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetShops", new { id = shops.Id }, shops);
+            return CreatedAtAction("GetShops", new { id = shops.ShopId }, shops);
         }
 
         // DELETE: api/Shops/5
@@ -109,14 +109,14 @@ namespace SalesAndDealsAPI.Controllers
             List<Shops> shops = await _context.Shops.Where(c => c.CountryId.Equals(id)).ToListAsync();
             foreach (Shops shop in shops)
             {
-                shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.Id) && (r.EndDate >= today)).Count();
-                shop.NotesAmount = _context.ShopNotes.Where(n => n.ShopId.Equals(shop.Id)).Count();
+                shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.ShopId) && (r.EndDate >= today)).Count();
+                shop.NotesAmount = _context.ShopNotes.Where(n => n.ShopId.Equals(shop.ShopId)).Count();
             }
             return shops;
         }
         private bool ShopsExists(int id)
         {
-            return _context.Shops.Any(e => e.Id == id);
+            return _context.Shops.Any(e => e.ShopId == id);
         }
 
 
@@ -125,7 +125,7 @@ namespace SalesAndDealsAPI.Controllers
         {
             if (ShopsExists(shopId))
             {
-                var shop = await _context.Shops.Where(s => s.Id.Equals(shopId)).SingleOrDefaultAsync();
+                var shop = await _context.Shops.Where(s => s.ShopId.Equals(shopId)).SingleOrDefaultAsync();
                 HttpClient http = new HttpClient();
                 http.DefaultRequestHeaders.Add("X-DexiIO-Access", DotNetEnv.Env.GetString("DEXIACCESS"));
                 http.DefaultRequestHeaders.Add("X-DexiIO-Account", DotNetEnv.Env.GetString("DEXIACCOUNT"));
@@ -165,7 +165,7 @@ namespace SalesAndDealsAPI.Controllers
             http.DefaultRequestHeaders.Add("X-DexiIO-Account", DotNetEnv.Env.GetString("DEXIACCOUNT"));
             http.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-            var shopsIds = await _context.Shops.Select(s => s.Id).ToListAsync();
+            var shopsIds = await _context.Shops.Select(s => s.ShopId).ToListAsync();
             foreach(var id in shopsIds)
             {
                 await FetchExecutionsForShop(id);

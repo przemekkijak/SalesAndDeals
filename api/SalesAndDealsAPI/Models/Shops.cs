@@ -9,7 +9,8 @@ namespace SalesAndDealsAPI.Models
 {
     public class Shops
     {
-        public int Id { get; set; }
+        [Key]
+        public int ShopId { get; set; }
         public string Name { get; set; }
         public int CountryId { get; set; }
         public int ActiveOffers { get; set; }

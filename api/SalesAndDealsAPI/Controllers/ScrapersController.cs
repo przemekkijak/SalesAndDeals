@@ -45,7 +45,7 @@ namespace SalesAndDealsAPI.Controllers
                 var updatedShop = new Shops()
                 {
                     AssignedTo = userId,
-                    Id = shopId,
+                    ShopId = shopId,
                     RobotState = "TODO"
                 };
                 _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
@@ -73,7 +73,7 @@ namespace SalesAndDealsAPI.Controllers
         {
             var updatedShop = new Shops()
             {
-                Id = shopId
+                ShopId = shopId
             };
             switch(state)
             {
@@ -111,7 +111,7 @@ namespace SalesAndDealsAPI.Controllers
 
         private bool ShopsExists(int id)
         {
-            return _context.Shops.Any(e => e.Id == id);
+            return _context.Shops.Any(e => e.ShopId == id);
         }
     }
 }

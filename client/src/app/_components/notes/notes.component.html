@@ -24,7 +24,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let note">
-                    <app-shop-actions [shopId]="note.shopId" [assignedTo]="note.assignedTo" [robotState]="note.robotState" parent="notes"></app-shop-actions>
+                    <app-shop-actions *ngIf="loaded" [data]="note" parent="notes"></app-shop-actions>
                 </td>
             </ng-container>
 
