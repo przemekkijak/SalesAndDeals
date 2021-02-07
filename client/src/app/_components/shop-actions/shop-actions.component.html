@@ -9,7 +9,7 @@
     <button mat-button *ngIf="data.assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me"><mat-icon>add_to_drive</mat-icon></button>
     <a mat-button *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" target="_blank"><mat-icon>build</mat-icon></a>
     <a mat-button *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Executions" href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" target="_blank"><mat-icon>line_weight</mat-icon></a>
-    <button mat-button *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS'" matTooltip="Accept"><mat-icon>done</mat-icon></button>
+    <button mat-button *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS' && parent == 'scrapers'" matTooltip="Accept"><mat-icon>done</mat-icon></button>
 </ng-container>
 
 
