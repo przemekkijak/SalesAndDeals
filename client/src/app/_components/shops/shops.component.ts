@@ -17,7 +17,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 
 export class ShopsComponent implements OnInit {
-  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','dexiRobot', 'actions'];
+  displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','actions'];
   countries: any = [];
   shops: any = [];
   dataSource = new MatTableDataSource<any>();

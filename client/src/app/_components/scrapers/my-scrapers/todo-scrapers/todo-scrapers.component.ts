@@ -11,12 +11,12 @@ import { MatMenuTrigger } from '@angular/material/menu';
   styleUrls: ['./todo-scrapers.component.scss']
 })
 export class TodoScrapersComponent implements OnInit {
-  displayedColumns: string[] = ['name','lastExecuted','dexiRobot', 'dexiExecutions','actions'];
+  displayedColumns: string[] = ['name','lastExecuted','actions'];
   scrapers: any = [];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-  @ViewChild(MatPaginator) paginator: MatPaginator
+  // @ViewChild(MatPaginator) paginator: MatPaginator
 
 
   constructor(private fetch: FetchService, private tokenStorage: TokenStorageService) { }
@@ -27,9 +27,4 @@ export class TodoScrapersComponent implements OnInit {
       this.dataSource = this.scrapers;
     })
   }
-
-  openNotes(shopId: number) {
-    console.log('notes');
-  }
-
 }

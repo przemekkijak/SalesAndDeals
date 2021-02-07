@@ -42,30 +42,45 @@ export class ShopActionsComponent implements OnInit {
   markAsExecuted() {
     this.fetch.changeState(this.data.shopId, "EXECUTED").subscribe(() => {
       this.showMessage('Scraper marked as executed', 'Close')
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
   markAsCantDo() {
     this.fetch.changeState(this.data.shopId, "CANTDOTHIS").subscribe(() => {
       this.showMessage('Scraper marked as - cant do this -', 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
   markAsSuccess() {
     this.fetch.changeState(this.data.shopId, "SUCCESS").subscribe(() => {
       this.showMessage('Scraper marked as Success', 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
   markAsNoOffer() {
     this.fetch.changeState(this.data.shopId, "NOOFFER").subscribe(() => {
       this.showMessage('Scraper marked as No Offer', 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
   markAsStillNoOffer() {
     this.fetch.changeState(this.data.shopId, "STILLNOOFFER").subscribe(() => {
       this.showMessage('Scraper marked as Still no offer', 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
@@ -83,5 +98,7 @@ export interface DataModel {
   shopId: number;
   robotState: string;
   inputUrl: string;
+  dexiRobot: string;
+  dexiRun: string;
 }
 

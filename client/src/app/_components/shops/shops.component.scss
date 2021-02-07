@@ -4,6 +4,9 @@
     height: 60%;
     table {
         width: 100%;
+        th {
+            width: auto;
+        }
         td {
             .green{
                 color: green;

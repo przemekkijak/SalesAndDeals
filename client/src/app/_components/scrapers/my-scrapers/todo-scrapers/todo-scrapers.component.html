@@ -13,20 +13,6 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="dexiRobot">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                <td mat-cell *matCellDef="let scrapers">
-                    <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/editor/scraper" target="_blank">Edit robot</a>
-                </td>
-            </ng-container>
-
-            <ng-container matColumnDef="dexiExecutions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                <td mat-cell *matCellDef="let scrapers">
-                    <a mat-button href="https://app.dexi.io/#/robots/{{scrapers.dexiRobot}}/runs/{{scrapers.dexiRun}}/edit/executions" target="_blank">Executions</a>
-                </td>
-            </ng-container>
-
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let scrapers">
@@ -38,7 +24,6 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator [pageSizeOptions]="[10,20,50,250]" showFirstLastButtons></mat-paginator>
     </div>
 
 </div>
