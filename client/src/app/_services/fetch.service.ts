@@ -47,8 +47,8 @@ export class FetchService {
   }
 
   //scrapers view 
-  getScrapersTodo(userId: number) {
-    return this.http.get(`/api/scrapers/todo/${userId}`);
+  getScrapers(userId: number, state: string) {
+    return this.http.get(`/api/scrapers/${userId}/${state}`);
   }
 
   // shop actions

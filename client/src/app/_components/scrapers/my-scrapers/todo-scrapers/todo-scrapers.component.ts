@@ -16,13 +16,11 @@ export class TodoScrapersComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-  // @ViewChild(MatPaginator) paginator: MatPaginator
-
 
   constructor(private fetch: FetchService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.fetch.getScrapersTodo(this.tokenStorage.getUser().id).subscribe(res => {
+    this.fetch.getScrapers(this.tokenStorage.getUser().id, "TODO").subscribe(res => {
       this.scrapers = res;
       this.dataSource = this.scrapers;
     })

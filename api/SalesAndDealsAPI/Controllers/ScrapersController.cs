@@ -20,10 +20,10 @@ namespace SalesAndDealsAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("todo/{userId}")]
-        public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetTodoScrapersForUser(int userId)
+        [HttpGet("{userId}/{state}")]
+        public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetScrapersForUser(int userId, string state)
         {
-            List<Shops> shops = await _context.Shops.Where(s => s.AssignedTo.Equals(userId) && (s.RobotState.Equals("TODO") || s.RobotState.Equals("OK"))).ToListAsync();
+            List<Shops> shops = await _context.Shops.Where(s => s.AssignedTo.Equals(userId) && (s.RobotState.Equals(state))).ToListAsync();
             List<ShopsDTO> result = new List<ShopsDTO>();
             foreach(Shops shop in shops)
             {
