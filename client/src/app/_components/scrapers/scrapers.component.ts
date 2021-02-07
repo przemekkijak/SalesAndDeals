@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-scrapers',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScrapersComponent implements OnInit {
 
-  constructor() { }
+  user = this.tokenStorage.getUser();
+
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
   }

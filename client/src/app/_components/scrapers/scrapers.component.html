@@ -1,6 +1,6 @@
 <div class="container">
     <mat-tab-group animationDuration="0ms">
-        <mat-tab label="My scrapers">
+        <mat-tab label="My scrapers" *ngIf="user.role == 'scraper'">
           <app-my-scrapers></app-my-scrapers>
         </mat-tab>
         
