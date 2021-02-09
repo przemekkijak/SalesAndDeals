@@ -12,7 +12,8 @@ enum State {
   Success = "SUCCESS",
   Nooffer = "NOOFFER",
   Stillnooffer = "STILLNOOFFER",
-  Ok = "OK"
+  Ok = "OK",
+  Todo = "TODO"
 }
 
 export interface DataModel {

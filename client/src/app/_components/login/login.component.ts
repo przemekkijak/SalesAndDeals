@@ -39,7 +39,7 @@ username = "";
         this.username = data.username;
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate(['/scrapers'])
+        this.router.navigate(['/scrapers/myscrapers'])
         .then(() => {
           window.location.reload();
         })

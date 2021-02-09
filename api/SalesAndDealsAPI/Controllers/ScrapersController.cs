@@ -82,7 +82,7 @@ namespace SalesAndDealsAPI.Controllers
             };
             switch(state)
             {
-                case "EXECUTED" or "SUCCESS":
+                case "EXECUTED" or "SUCCESS" or "TODO":
                     updatedShop.RobotState = state;
                     _context.Entry(updatedShop).Property("RobotState").IsModified = true;
                     break;

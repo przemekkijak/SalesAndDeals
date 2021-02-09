@@ -10,7 +10,11 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class LeftMenuComponent implements OnInit {
 
   isLoggedIn = false;
+  
   constructor(private tokenStorage: TokenStorageService) { }
+
+  user = this.tokenStorage.getUser();
+
 
   ngOnInit(): void {
     if(this.tokenStorage.getToken()) {

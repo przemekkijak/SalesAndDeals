@@ -1,6 +1,9 @@
 <div class="container">
     <ul class="menuList">
-        <li *ngIf="isLoggedIn" matRipple><a routerLink="/scrapers">Scrapers</a></li>
+        <li *ngIf="isLoggedIn" matRipple>
+            <a *ngIf="user.role == 'scraper'" routerLink="/scrapers/myscrapers">Scrapers</a>
+            <a *ngIf="user.role == 'admin'" routerLink="/scrapers/admin">Scrapers</a>
+        </li>
         <li *ngIf="isLoggedIn" matRipple><a routerLink="/">Shop details</a></li>
         <li *ngIf="isLoggedIn" matRipple><a routerLink="/shops">Shops</a></li>
         <li *ngIf="isLoggedIn" matRipple><a routerLink="/notes">Notes</a></li>

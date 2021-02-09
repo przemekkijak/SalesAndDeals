@@ -16,17 +16,17 @@ export class ScrapersComponent implements OnInit {
     {name: 'No offer', route: 'nooffer'}
   ];
   admin = {name: 'Admin', route: 'admin'}
-  activeLink = this.links[0];
+  route = this.router.url.split('/');
+  activeLink = this.route[this.route.length-1];
 
   constructor(private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
     if(this.user.role == 'admin') {
       this.router.navigate(['scrapers/admin']);
-      this.activeLink = this.admin;
-    } else {
-      this.router.navigate(['scrapers/myscrapers/todo']);
+      this.activeLink = this.admin.name;
     }
+    console.log(this.route[this.route.length-1]);
   }
 
 }

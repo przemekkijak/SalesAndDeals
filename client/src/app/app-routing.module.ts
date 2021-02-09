@@ -27,6 +27,7 @@ const routes: Routes = [
       {path: 'todo', component: TodoScrapersComponent},
       {path: 'executed', component: WaitExecutionScrapersComponent},
       {path: 'success', component: SuccessScrapersComponent},
+      {path: '', component: TodoScrapersComponent}
     ]}
   ]},
   
@@ -41,7 +42,7 @@ const routes: Routes = [
 
 
   {path: 'login', component: LoginComponent},
-  {path: '**', component: ScrapersComponent, canActivate: [AuthGuard]}
+  {path: '**', component: MyScrapersComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

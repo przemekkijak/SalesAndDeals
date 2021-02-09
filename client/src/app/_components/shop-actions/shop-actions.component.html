@@ -10,7 +10,7 @@
     <button (click)="assignToMe()" *ngIf="data.assignedTo == 0 && user.role == 'scraper'" matTooltip="Assign to me" mat-button><mat-icon>add_to_drive</mat-icon></button>
     <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" mat-button target="_blank"><mat-icon>build</mat-icon></a>
     <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" mat-button matTooltip="Executions"  target="_blank"><mat-icon>line_weight</mat-icon></a>
-    <button (click)="markScraperAs(ScraperState.Ok)" *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS' && parent == 'scrapers'" matTooltip="Accept" mat-button><mat-icon>done</mat-icon></button>
+    <button (click)="markScraperAs(ScraperState.Ok)" *ngIf="user.role == 'admin' && data.robotState == ScraperState.Success && parent == 'scrapers'" matTooltip="Accept" mat-button><mat-icon>done</mat-icon></button>
     <button *ngIf="data.usingProxy" mat-button matTooltip="Using proxy"><mat-icon>language</mat-icon></button>
 </ng-container>
 
@@ -22,10 +22,11 @@
 
 <mat-menu #markAs="matMenu">
     <ng-container *ngIf="data.assignedTo == user.id">
-        <button (click)="markScraperAs(ScraperState.Executed)" *ngIf="data.robotState != 'EXECUTED'" mat-menu-item>Executed</button>
+        <button (click)="markScraperAs(ScraperState.Todo)" *ngIf="data.robotState != ScraperState.Todo" mat-menu-item>Todo</button>
+        <button (click)="markScraperAs(ScraperState.Executed)" *ngIf="data.robotState != ScraperState.Executed" mat-menu-item>Executed</button>
         <button (click)="markScraperAs(ScraperState.Cantdothis)" mat-menu-item>Can't do this</button>
-        <button (click)="markScraperAs(ScraperState.Success)" *ngIf="data.robotState !='SUCCESS'" mat-menu-item>Success</button>
+        <button (click)="markScraperAs(ScraperState.Success)" *ngIf="data.robotState != ScraperState.Success" mat-menu-item>Success</button>
     </ng-container>
-        <button (click)="markScraperAs(ScraperState.Nooffer)" *ngIf="(data.robotState !='NOOFFER') && data.assignedTo == 0 || data.assignedTo == user.id" mat-menu-item>No offer</button>
-        <button (click)="markScraperAs(ScraperState.Stillnooffer)" *ngIf="data.robotState == 'NOOFFER'" mat-menu-item>Still no offer</button>
+        <button (click)="markScraperAs(ScraperState.Nooffer)" *ngIf="(data.robotState != ScraperState.Nooffer) && data.assignedTo == 0 || data.assignedTo == user.id" mat-menu-item>No offer</button>
+        <button (click)="markScraperAs(ScraperState.Stillnooffer)" *ngIf="data.robotState == ScraperState.Nooffer" mat-menu-item>Still no offer</button>
 </mat-menu>
