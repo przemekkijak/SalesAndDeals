@@ -39,7 +39,7 @@ export class TokenStorageService {
 
   // users list for admin
   public getUsers(): any {
-    const users = window.sessionStorage.getItem(USERS_LIST);
+    const users = localStorage.getItem(USERS_LIST);
     if(users) {
       return JSON.parse(users);
     }
@@ -47,6 +47,6 @@ export class TokenStorageService {
   }
 
   public saveUsers(users: any) {
-    window.sessionStorage.setItem(USERS_LIST, JSON.stringify(users));
+    window.localStorage.setItem(USERS_LIST, JSON.stringify(users));
   }
 }
