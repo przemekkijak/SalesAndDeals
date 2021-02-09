@@ -14,16 +14,11 @@
     <button *ngIf="data.usingProxy" mat-button matTooltip="Using proxy"><mat-icon>language</mat-icon></button>
 </ng-container>
 
-
-<!-- assign scraper to user -->
-
 <mat-menu #assignTo="matMenu">
     <ng-container *ngFor="let user of users">
         <button (click)="assignToUser(user)" *ngIf="user.role == 'scraper'" mat-menu-item>{{user.username}}</button>
     </ng-container>
 </mat-menu>
-
-<!-- mark scraper as -->
 
 <mat-menu #markAs="matMenu">
     <ng-container *ngIf="data.assignedTo == user.id">

@@ -1,21 +1,10 @@
 <div class="container">
-    <mat-tab-group animationDuration="0ms">
-        <mat-tab label="To do">
-            <ng-template matTabContent>
-                <app-todo-scrapers></app-todo-scrapers>
-            </ng-template>
-        </mat-tab>
-        
-        <mat-tab label="Waiting for execution">
-            <ng-template matTabContent>
-                <app-wait-execution-scrapers></app-wait-execution-scrapers>
-            </ng-template>
-        </mat-tab>
-        
-        <mat-tab label="Success">
-            <ng-template matTabContent>
-                <app-success-scrapers></app-success-scrapers>
-            </ng-template>
-        </mat-tab>
-      </mat-tab-group>
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link 
+        *ngFor="let link of links" 
+        (click)="activeLink = link"
+        [active]="activeLink == link"
+        [routerLink]="link.route">{{link.name}}</a>
+      </nav>
+      <router-outlet></router-outlet>
 </div>
