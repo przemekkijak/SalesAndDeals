@@ -88,7 +88,7 @@ namespace SalesAndDealsAPI.Controllers
                     updatedShop.RobotState = state;
                     _context.Entry(updatedShop).Property("RobotState").IsModified = true;
                     break;
-                case "CANTDOTHIS" or "NOOFFER":
+                case "CANTDOTHIS" or "NOOFFER" or "OK":
                     updatedShop.RobotState = state;
                     updatedShop.AssignedTo = 0;
                     _context.Entry(updatedShop).Property("RobotState").IsModified = true;

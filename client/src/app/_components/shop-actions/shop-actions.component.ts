@@ -6,20 +6,33 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ShopNotesComponent } from '../shop-notes/shop-notes.component';
 
+enum State {
+  Executed = "EXECUTED",
+  Cantdothis = "CANTDOTHIS",
+  Success = "SUCCESS",
+  Nooffer = "NOOFFER",
+  Stillnooffer = "STILLNOOFFER",
+  Ok = "OK"
+}
+
+
 @Component({
   selector: 'app-shop-actions',
   templateUrl: './shop-actions.component.html',
   styleUrls: ['./shop-actions.component.scss']
 })
+
 export class ShopActionsComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService, private fetch: FetchService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   @Input() data: DataModel;
   @Input() parent: string;
+  ScraperState = State;
 
   user = this.tokenStorage.getUser();
   users = this.tokenStorage.getUsers();
+
 
   openNotes() {
     this.dialog.open(ShopNotesComponent, {data: {shopId: this.data.shopId},
@@ -45,27 +58,9 @@ export class ShopActionsComponent implements OnInit {
     })
   }
 
-  markAsCantDo() {
-    this.fetch.changeState(this.data.shopId, "CANTDOTHIS").subscribe(() => {
-      this.showMessage('Scraper marked as - cant do this -', 'Close');
-    })
-  }
-
-  markAsSuccess() {
-    this.fetch.changeState(this.data.shopId, "SUCCESS").subscribe(() => {
-      this.showMessage('Scraper marked as Success', 'Close');
-    })
-  }
-
-  markAsNoOffer() {
-    this.fetch.changeState(this.data.shopId, "NOOFFER").subscribe(() => {
-      this.showMessage('Scraper marked as No Offer', 'Close');
-    })
-  }
-
-  markAsStillNoOffer() {
-    this.fetch.changeState(this.data.shopId, "STILLNOOFFER").subscribe(() => {
-      this.showMessage('Scraper marked as Still no offer', 'Close');
+  markScraperAs(state: State) {
+    this.fetch.changeState(this.data.shopId, state).subscribe(() => {
+      this.showMessage(`Scraper marked as - ${state} - `, 'Close');
     })
   }
 

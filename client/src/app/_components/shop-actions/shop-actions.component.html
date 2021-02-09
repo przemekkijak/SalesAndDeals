@@ -1,32 +1,35 @@
 <ng-container> 
-    <a mat-button matTooltip="Website" href="{{data.inputUrl}}" target="_blank"><mat-icon>explore</mat-icon></a>
-    <button mat-button matTooltip="Notes" (click)="openNotes()"><mat-icon>inbox</mat-icon></button>
-    <button mat-button *ngIf="user.role == 'admin'" matTooltip="Assign scraper" [matMenuTriggerFor]="assignTo"><mat-icon>manage_accounts</mat-icon></button>
-    <button mat-button [matMenuTriggerFor]="markAs" matTooltip="Mark as" *ngIf="(parent == 'shops' || parent == 'scrapers') && (data.assignedTo == 0 || data.assignedTo == user.id)">
+    
+    <a href="{{data.inputUrl}}" mat-button matTooltip="Website" target="_blank"><mat-icon>explore</mat-icon></a>
+    <button (click)="openNotes()" mat-button matTooltip="Notes"><mat-icon>inbox</mat-icon></button>
+    <button [matMenuTriggerFor]="assignTo" *ngIf="user.role == 'admin'" matTooltip="Assign scraper" mat-button><mat-icon>manage_accounts</mat-icon></button>
+    <button [matMenuTriggerFor]="markAs" *ngIf="(parent == 'shops' || parent == 'scrapers') && (data.assignedTo == 0 || data.assignedTo == user.id)" matTooltip="Mark as" mat-button>
         <mat-icon *ngIf="data.assignedTo == 0">check_circle_outline</mat-icon>
         <mat-icon *ngIf="data.assignedTo == user.id">check_circle</mat-icon>
     </button>
-    <button mat-button *ngIf="data.assignedTo == 0 && user.role == 'scraper'" (click)="assignToMe()" matTooltip="Assign to me"><mat-icon>add_to_drive</mat-icon></button>
-    <a mat-button *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" target="_blank"><mat-icon>build</mat-icon></a>
-    <a mat-button *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Executions" href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" target="_blank"><mat-icon>line_weight</mat-icon></a>
-    <button mat-button *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS' && parent == 'scrapers'" matTooltip="Accept"><mat-icon>done</mat-icon></button>
+    <button (click)="assignToMe()" *ngIf="data.assignedTo == 0 && user.role == 'scraper'" matTooltip="Assign to me" mat-button><mat-icon>add_to_drive</mat-icon></button>
+    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" target="_blank"><mat-icon>build</mat-icon></a>
+    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Executions"  target="_blank"><mat-icon>line_weight</mat-icon></a>
+    <button (click)="markScraperAs(ScraperState.Ok)" *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS' && parent == 'scrapers'" matTooltip="Accept" mat-button><mat-icon>done</mat-icon></button>
 </ng-container>
 
 
-<!-- menu -->
+<!-- assign scraper to user -->
 
 <mat-menu #assignTo="matMenu">
     <ng-container *ngFor="let user of users">
-        <button (click)="assignToUser(user)" mat-menu-item *ngIf="user.role == 'scraper'">{{user.username}}</button>
+        <button (click)="assignToUser(user)" *ngIf="user.role == 'scraper'" mat-menu-item>{{user.username}}</button>
     </ng-container>
 </mat-menu>
 
+<!-- mark scraper as -->
+
 <mat-menu #markAs="matMenu">
     <ng-container *ngIf="data.assignedTo == user.id">
-        <button *ngIf="data.robotState != 'EXECUTED'" (click)="markAsExecuted()" mat-menu-item>Executed</button>
-        <button (click)="markAsCantDo()" mat-menu-item>Can't do this</button>
-        <button *ngIf="data.robotState !='SUCCESS'" (click)="markAsSuccess()" mat-menu-item>Success</button>
+        <button (click)="markScraperAs(ScraperState.Executed)" *ngIf="data.robotState != 'EXECUTED'" mat-menu-item>Executed</button>
+        <button (click)="markScraperAs(ScraperState.Cantdothis)" mat-menu-item>Can't do this</button>
+        <button (click)="markScraperAs(ScraperState.Success)" *ngIf="data.robotState !='SUCCESS'" mat-menu-item>Success</button>
     </ng-container>
-        <button (click)="markAsNoOffer()" mat-menu-item *ngIf="(data.robotState !='NOOFFER') && data.assignedTo == 0 || data.assignedTo == user.id" >No offer</button>
-        <button (click)="markAsStillNoOffer()" mat-menu-item *ngIf="data.robotState == 'NOOFFER'">Still no offer</button>
+        <button (click)="markScraperAs(ScraperState.Nooffer)" *ngIf="(data.robotState !='NOOFFER') && data.assignedTo == 0 || data.assignedTo == user.id" mat-menu-item>No offer</button>
+        <button (click)="markScraperAs(ScraperState.Stillnooffer)" *ngIf="data.robotState == 'NOOFFER'" mat-menu-item>Still no offer</button>
 </mat-menu>
