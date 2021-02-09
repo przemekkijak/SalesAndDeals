@@ -1,29 +1,16 @@
 <div class="container">
-  <mat-tab-group animationDuration="0ms">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link 
+    *ngIf="user.role == 'admin'"
+    (click)="activeLink = admin"
+    [active]="activeLink == admin"
+    [routerLink]="admin.route">Admin</a>
 
-    <mat-tab label="Admin" *ngIf="user.role == 'admin'">
-      <ng-template matTabContent>
-        <app-scrapers-admin></app-scrapers-admin>
-      </ng-template>
-    </mat-tab>
-
-    <mat-tab label="My scrapers" *ngIf="user.role == 'scraper'">
-      <ng-template matTabContent>
-        <app-my-scrapers></app-my-scrapers>
-      </ng-template>
-    </mat-tab>
-        
-    <mat-tab label="Failings">
-      <ng-template matTabContent>
-        <app-failings></app-failings>
-      </ng-template>
-    </mat-tab>
-        
-    <mat-tab label="No offer">
-      <ng-template matTabContent>
-        <app-nooffer></app-nooffer>
-      </ng-template>
-    </mat-tab>
-
-  </mat-tab-group>
+    <a mat-tab-link 
+    *ngFor="let link of links" 
+    (click)="activeLink = link"
+    [active]="activeLink == link"
+    [routerLink]="link.route">{{link.name}}</a>
+    </nav>
+    <router-outlet></router-outlet>
 </div>

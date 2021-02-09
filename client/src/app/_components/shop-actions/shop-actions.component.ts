@@ -15,6 +15,15 @@ enum State {
   Ok = "OK"
 }
 
+export interface DataModel {
+  assignedTo: number;
+  shopId: number;
+  robotState: string;
+  inputUrl: string;
+  dexiRobot: string;
+  dexiRun: string;
+  usingProxy: boolean;
+}
 
 @Component({
   selector: 'app-shop-actions',
@@ -42,19 +51,28 @@ export class ShopActionsComponent implements OnInit {
   assignToUser(user: MatMenuItem) {
     var userData = this.users.filter(u => u.id == user['id']);
     this.fetch.assignTo(user['id'], this.data.shopId).subscribe(() => {
-      this.showMessage(`Assigned scraper to ${userData[0].username}`, 'Close')
+      this.showMessage(`Assigned scraper to ${userData[0].username}`, 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     });
   }
 
   assignToMe() {
     this.fetch.assignTo(this.user['id'], this.data.shopId).subscribe(() => {
       this.showMessage('Assigned scraper to myself', 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
   markScraperAs(state: State) {
     this.fetch.changeState(this.data.shopId, state).subscribe(() => {
       this.showMessage(`Scraper marked as - ${state} - `, 'Close');
+      if(this.parent == 'scrapers') {
+        window.location.reload();
+      }
     })
   }
 
@@ -63,18 +81,7 @@ export class ShopActionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
-}
-
-export interface DataModel {
-  assignedTo: number;
-  shopId: number;
-  robotState: string;
-  inputUrl: string;
-  dexiRobot: string;
-  dexiRun: string;
-  usingProxy: boolean;
 }
 
