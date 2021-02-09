@@ -8,9 +8,10 @@
         <mat-icon *ngIf="data.assignedTo == user.id">check_circle</mat-icon>
     </button>
     <button (click)="assignToMe()" *ngIf="data.assignedTo == 0 && user.role == 'scraper'" matTooltip="Assign to me" mat-button><mat-icon>add_to_drive</mat-icon></button>
-    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" target="_blank"><mat-icon>build</mat-icon></a>
-    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Executions"  target="_blank"><mat-icon>line_weight</mat-icon></a>
+    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/editor/scraper" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" matTooltip="Edit robot" mat-button target="_blank"><mat-icon>build</mat-icon></a>
+    <a href="https://app.dexi.io/#/robots/{{data.dexiRobot}}/runs/{{data.dexiRun}}/edit/executions" *ngIf="data.assignedTo == user.id && parent == 'scrapers'" mat-button matTooltip="Executions"  target="_blank"><mat-icon>line_weight</mat-icon></a>
     <button (click)="markScraperAs(ScraperState.Ok)" *ngIf="user.role == 'admin' && data.robotState == 'SUCCESS' && parent == 'scrapers'" matTooltip="Accept" mat-button><mat-icon>done</mat-icon></button>
+    <button *ngIf="data.usingProxy" mat-button matTooltip="Using proxy"><mat-icon>language</mat-icon></button>
 </ng-container>
 
 

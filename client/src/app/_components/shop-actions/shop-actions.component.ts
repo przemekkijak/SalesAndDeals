@@ -44,17 +44,11 @@ export class ShopActionsComponent implements OnInit {
     this.fetch.assignTo(user['id'], this.data.shopId).subscribe(() => {
       this.showMessage(`Assigned scraper to ${userData[0].username}`, 'Close')
     });
-  };
+  }
 
   assignToMe() {
     this.fetch.assignTo(this.user['id'], this.data.shopId).subscribe(() => {
       this.showMessage('Assigned scraper to myself', 'Close');
-    })
-  }
-
-  markAsExecuted() {
-    this.fetch.changeState(this.data.shopId, "EXECUTED").subscribe(() => {
-      this.showMessage('Scraper marked as executed', 'Close')
     })
   }
 
@@ -69,6 +63,7 @@ export class ShopActionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }
@@ -80,5 +75,6 @@ export interface DataModel {
   inputUrl: string;
   dexiRobot: string;
   dexiRun: string;
+  usingProxy: boolean;
 }
 

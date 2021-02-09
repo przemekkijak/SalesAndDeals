@@ -25,7 +25,7 @@ namespace SalesAndDealsAPI.Controllers
         public async Task<ActionResult<IEnumerable<ShopNotesDTO>>> GetShopNotes()
         {
             List<ShopNotes> notes = await _context.ShopNotes.ToListAsync();
-            List<ShopNotesDTO> resultNotes = new List<ShopNotesDTO>();
+            List<ShopNotesDTO> results = new List<ShopNotesDTO>();
             foreach(ShopNotes note in notes)
             {
                 var shopData = await _context.Shops.Where(s => s.ShopId.Equals(note.ShopId)).FirstOrDefaultAsync();
@@ -36,9 +36,9 @@ namespace SalesAndDealsAPI.Controllers
                     RobotState = shopData.RobotState,
                     AssignedTo = shopData.AssignedTo
                 };
-                resultNotes.Add(noteDTO);
+                results.Add(noteDTO);
             }
-            return resultNotes;
+            return results;
         }
 
         [HttpGet("getNotesForShop/{id}")]

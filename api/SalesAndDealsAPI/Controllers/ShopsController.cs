@@ -110,7 +110,6 @@ namespace SalesAndDealsAPI.Controllers
             foreach (Shops shop in shops)
             {
                 shop.ActiveOffers = _context.Results.Where(r => r.ShopId.Equals(shop.ShopId) && (r.EndDate >= today)).Count();
-                shop.NotesAmount = _context.ShopNotes.Where(n => n.ShopId.Equals(shop.ShopId)).Count();
             }
             return shops;
         }

@@ -44,8 +44,6 @@ namespace SalesAndDealsAPI.Controllers
             return result;
         }
 
-
-        //scrapers actions
         [HttpPut("assignTo/{userId}/{shopId}")]
         public async Task<IActionResult> AssignScraperTo(int userId, int shopId)
         {

@@ -21,13 +21,11 @@ namespace SalesAndDealsAPI.Models
         public string DexiRobot { get; set; }
         public int Rank { get; set; }
         public string Category { get; set; }
-        public int NotesAmount { get; set; }
         public string InputUrl { get; set; }
         public string RobotState { get; set; }
         public string LastModifiedByName { get; set; }
         public DateTime? LastChanged { get; set; }
-
-
+        public int UsingProxy { get; set; }
     }
 
 }
