@@ -11,7 +11,7 @@ export class ScrapersComponent implements OnInit {
 
   user = this.tokenStorage.getUser();
   links = [
-    {name: 'My scrapers', route: 'todo'},
+    {name: 'My scrapers', route: 'myscrapers'},
     {name: 'Failings', route: 'failings'},
     {name: 'No offer', route: 'nooffer'}
   ];
@@ -24,6 +24,8 @@ export class ScrapersComponent implements OnInit {
     if(this.user.role == 'admin') {
       this.router.navigate(['scrapers/admin']);
       this.activeLink = this.admin;
+    } else {
+      this.router.navigate(['scrapers/myscrapers/todo']);
     }
   }
 

@@ -11,6 +11,7 @@ import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/suc
 import { FailingsComponent } from './_components/scrapers/failings/failings.component';
 import { NoofferComponent } from './_components/scrapers/nooffer/nooffer.component';
 import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component';
+import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component';
 
 
 const routes: Routes = [
@@ -19,13 +20,14 @@ const routes: Routes = [
     component: ScrapersComponent, 
     canActivate: [AuthGuard],
     children: [
-    {path: 'todo', component: TodoScrapersComponent},
-    {path: 'executed', component: WaitExecutionScrapersComponent},
-    {path: 'success', component: SuccessScrapersComponent},
     {path: 'failings', component: FailingsComponent},
     {path: 'nooffer', component: NoofferComponent},
     {path: 'admin', component: ScrapersAdminComponent},
-    {path: '', component: TodoScrapersComponent}
+    {path: 'myscrapers', component: MyScrapersComponent, children: [
+      {path: 'todo', component: TodoScrapersComponent},
+      {path: 'executed', component: WaitExecutionScrapersComponent},
+      {path: 'success', component: SuccessScrapersComponent},
+    ]}
   ]},
   
   {path: 'shops', 
