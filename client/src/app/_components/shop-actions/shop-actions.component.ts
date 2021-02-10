@@ -13,7 +13,8 @@ enum State {
   Nooffer = "NOOFFER",
   Stillnooffer = "STILLNOOFFER",
   Ok = "OK",
-  Todo = "TODO"
+  Todo = "TODO",
+  Hard = "HARD"
 }
 
 export interface DataModel {
@@ -69,7 +70,7 @@ export class ShopActionsComponent implements OnInit {
   }
 
   markScraperAs(state: State) {
-    this.fetch.changeState(this.data.shopId, state).subscribe(() => {
+    this.fetch.changeState(this.data.shopId, state, this.user.username).subscribe(() => {
       this.showMessage(`Scraper marked as - ${state} - `, 'Close');
       if(this.parent == 'scrapers') {
         window.location.reload();

@@ -18,6 +18,7 @@ namespace SalesAndDealsAPI.Models
         public int AssignedTo { get; set; }
         public string RobotState { get; set; }
         public string LastModifiedByName { get; set; }
+        public DateTime? LastChanged { get; set; }
         public int UsingProxy { get; set; }
 
         public ShopsDTO(Shops shop)
@@ -32,6 +33,7 @@ namespace SalesAndDealsAPI.Models
             this.RobotState = shop.RobotState;
             this.LastModifiedByName = shop.LastModifiedByName;
             this.UsingProxy = shop.UsingProxy;
+            this.LastChanged = shop.LastChanged;
         }
 
     }

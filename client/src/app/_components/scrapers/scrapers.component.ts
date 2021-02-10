@@ -13,7 +13,8 @@ export class ScrapersComponent implements OnInit {
   links = [
     {name: 'My scrapers', route: 'myscrapers'},
     {name: 'Failings', route: 'failings'},
-    {name: 'No offer', route: 'nooffer'}
+    {name: 'No offer', route: 'nooffer'},
+    {name: 'Hard cases', route: 'hard'}
   ];
   admin = {name: 'Admin', route: 'admin'}
   route = this.router.url.split('/');
@@ -26,7 +27,6 @@ export class ScrapersComponent implements OnInit {
       this.router.navigate(['scrapers/admin']);
       this.activeLink = this.admin.name;
     }
-    console.log(this.route[this.route.length-1]);
   }
 
 }

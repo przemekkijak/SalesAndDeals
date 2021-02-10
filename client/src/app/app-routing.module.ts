@@ -12,6 +12,7 @@ import { FailingsComponent } from './_components/scrapers/failings/failings.comp
 import { NoofferComponent } from './_components/scrapers/nooffer/nooffer.component';
 import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component';
 import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component';
+import { HardCasesComponent } from './_components/scrapers/hard-cases/hard-cases.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     children: [
     {path: 'failings', component: FailingsComponent},
     {path: 'nooffer', component: NoofferComponent},
+    {path: 'hard', component: HardCasesComponent},
     {path: 'admin', component: ScrapersAdminComponent},
     {path: 'myscrapers', component: MyScrapersComponent, children: [
       {path: 'todo', component: TodoScrapersComponent},

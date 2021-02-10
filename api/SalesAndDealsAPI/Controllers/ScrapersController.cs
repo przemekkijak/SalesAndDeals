@@ -73,16 +73,18 @@ namespace SalesAndDealsAPI.Controllers
             return Ok();
             }
 
-        [HttpPut("changeState/{shopId}/{state}")]
-        public async Task<IActionResult> ChangeScraperState(int shopId, string state)
+        [HttpPut("changeState/{shopId}/{state}/{modifiedByName}")]
+        public async Task<IActionResult> ChangeScraperState(int shopId, string state, string modifiedByName)
         {
             var updatedShop = new Shops()
             {
-                ShopId = shopId
+                ShopId = shopId,
+                LastModifiedByName = modifiedByName,
+                LastChanged = DateTime.Now
             };
             switch(state)
             {
-                case "EXECUTED" or "SUCCESS" or "TODO":
+                case "EXECUTED" or "SUCCESS" or "TODO" or "HARD":
                     updatedShop.RobotState = state;
                     _context.Entry(updatedShop).Property("RobotState").IsModified = true;
                     break;
@@ -92,11 +94,9 @@ namespace SalesAndDealsAPI.Controllers
                     _context.Entry(updatedShop).Property("RobotState").IsModified = true;
                     _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
                     break;
-                case "STILLNOOFFER":
-                    updatedShop.LastChanged = DateTime.Now;
-                    _context.Entry(updatedShop).Property("LastChanged").IsModified = true;
-                    break;
             }
+            _context.Entry(updatedShop).Property("LastModifiedByName").IsModified = true;
+            _context.Entry(updatedShop).Property("LastChanged").IsModified = true;
             try
             {
                 await _context.SaveChangesAsync();

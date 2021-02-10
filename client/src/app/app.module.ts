@@ -23,6 +23,7 @@ import { TodoScrapersComponent } from './_components/scrapers/my-scrapers/todo-s
 import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrapers/wait-execution-scrapers/wait-execution-scrapers.component';
 import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
 import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component'; 
+import { HardCasesComponent } from './_components/scrapers/hard-cases/hard-cases.component'; 
 
 
 // helpers
@@ -47,7 +48,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatIconModule} from '@angular/material/icon'; 
-import { MatTooltipModule} from '@angular/material/tooltip'; 
+import { MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -70,7 +71,8 @@ import { MatTooltipModule} from '@angular/material/tooltip';
     WaitExecutionScrapersComponent,
     SuccessScrapersComponent,
     ShopActionsComponent,
-    ScrapersAdminComponent
+    ScrapersAdminComponent,
+    HardCasesComponent
   ],
   imports: [
     BrowserModule,
