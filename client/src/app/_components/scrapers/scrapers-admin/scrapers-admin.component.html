@@ -13,6 +13,11 @@
                 </td>
             </ng-container>
 
+            <ng-container matColumnDef="scraper">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Scraper</th>
+                <td mat-cell *matCellDef="let success">{{success.lastModifiedByName}}</td>
+            </ng-container>
+
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let success">
@@ -37,6 +42,11 @@
                 <td mat-cell *matCellDef="let cant">
                     <a [ngClass]="(cant.executionState=='FAILED')?'red':''" mat-button href="https://app.dexi.io/#/robots/{{cant.dexiRobot}}/runs/{{cant.dexiRun}}/edit/executions" target="_blank">{{cant.lastExecuted | date: 'dd MMM HH:mm'}}</a>
                 </td>
+            </ng-container>
+
+            <ng-container matColumnDef="scraper">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Scraper</th>
+                <td mat-cell *matCellDef="let cant">{{cant.lastModifiedByName}}</td>
             </ng-container>
 
             <ng-container matColumnDef="actions">

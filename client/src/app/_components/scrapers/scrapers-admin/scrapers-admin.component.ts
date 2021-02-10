@@ -9,7 +9,7 @@ import { FetchService } from 'src/app/_services/fetch.service';
   styleUrls: ['./scrapers-admin.component.scss']
 })
 export class ScrapersAdminComponent implements OnInit {
-  displayedColumns: string[] = ['name','lastExecuted','actions'];
+  displayedColumns: string[] = ['name','lastExecuted','scraper', 'actions'];
   success: any = [];
   cant: any = [];
   successDataSource = new MatTableDataSource<any>();
@@ -25,6 +25,7 @@ export class ScrapersAdminComponent implements OnInit {
       this.success = res;
       this.success.sort((a,b) => a.name.localeCompare(b.name));
       this.successDataSource = this.success;
+      console.log(this.success);
     })
     this.fetch.getScrapers(0, "CANTDOTHIS").subscribe(res => {
       this.cant = res;
