@@ -132,6 +132,10 @@ namespace SalesAndDealsAPI.Controllers
         [HttpPut("tag/{shopId}/{tagName}")]
         public async Task<IActionResult> SetTagForShop(int shopId, string tagName)
         {
+            if(tagName == "null")
+            {
+                tagName = null;
+            }
             var updatedShop = new Shops()
             {
                 ShopId = shopId,
@@ -154,7 +158,16 @@ namespace SalesAndDealsAPI.Controllers
             return Ok();
         }
 
-
+        [HttpPost("tag")]
+        public async Task<IActionResult> CreateTag(Tag _tagData)
+        {
+            if(_tagData != null && _tagData.Name != null && _tagData.Description != null)
+            {
+                _context.Tags.Add(_tagData);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
+        }
         //shops view endpoints
 
         [HttpGet("forCountry/{id}")]

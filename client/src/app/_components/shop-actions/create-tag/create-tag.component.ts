@@ -15,6 +15,12 @@ export class CreateTagComponent implements OnInit {
 
   tags: Tag[] = [];
   selectedTag: string;
+  form: any = {
+    name: null,
+    color: null,
+    description: null,
+    canWork: 1
+  };
 
   ngOnInit(): void {
     this.fetch.getTags().subscribe((res) => {
@@ -27,6 +33,16 @@ export class CreateTagComponent implements OnInit {
     this.fetch.setTag(this.data.shopId, tagName).subscribe(() => {
       window.location.reload();
     })
+  }
+
+  onSubmit() {
+    const {name, color, description, canWork} = this.form;
+    this.fetch.createTag(name, description, color, canWork).subscribe(() => {
+      this.fetch.setTag(this.data.shopId, name).subscribe(() => {
+        window.location.reload();
+      })
+    })
+
   }
 
 }

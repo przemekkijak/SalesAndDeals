@@ -1,12 +1,42 @@
 <div class="container">
-    <mat-tab-group animationDuration="0ms">
-        <mat-tab label="Use existing tag">
-          <div class="content">
-            <mat-chip-list>
-              <mat-chip (click)="setTag(tag.name)"class="tag" *ngFor="let tag of tags" [style.backgroundColor]="tag.color" matTooltip="{{tag.description}}">{{tag.name}}</mat-chip>
-            </mat-chip-list>            
-          </div>
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab label="Use existing tag">
+      <div class="content">
+        <mat-chip-list>
+          <mat-chip (click)="setTag(tag.name)" class="tag" *ngFor="let tag of tags" [style.backgroundColor]="tag.color" matTooltip="{{tag.description}}">{{tag.name}}</mat-chip>
+          <mat-chip (click)="setTag('null')" class="tag">Usun tag</mat-chip>
+        </mat-chip-list>            
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Create tag">
+      <div class="content">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+          <mat-form-field class="field">
+            <mat-label for="name">Name</mat-label>
+            <input matInput [(ngModel)]="form.name" name="name" required #name="ngModel">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="field">
+            <mat-label for="description">Description</mat-label>
+            <input matInput [(ngModel)]="form.description" name="description" required #description="ngModel">
+          </mat-form-field>
+          <br>
+          <mat-form-field class="field">
+            <mat-label for="color">Color</mat-label>
+            <input matInput [(ngModel)]="form.color" name="color" #color="ngModel">  
+          </mat-form-field>
+
+          <mat-form-field class="field">
+            <mat-label for="canWork">Can work?</mat-label>
+            <mat-select required [(value)]="form.canWork">
+              <mat-option [value]="1">Yes</mat-option>
+              <mat-option [value]="0">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="accent" type="submit">Create and set</button>
+        </form>
+        </div>
         </mat-tab>
-        <mat-tab label="Create tag"> Content 2 </mat-tab>
       </mat-tab-group>    
 </div>
