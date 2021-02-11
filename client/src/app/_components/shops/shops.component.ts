@@ -29,15 +29,6 @@ export class ShopsComponent implements OnInit {
 
   constructor(private fetch: FetchService, private dialog: MatDialog, private tokenStorage: TokenStorageService) { }
   
-  changeCountry() {
-    this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
-      this.shops = res;
-      this.dataSource.data = this.shops;
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-
-    })
-  }
 
   getUsername(userId: number) {
     if(userId == 0) {
@@ -46,6 +37,15 @@ export class ShopsComponent implements OnInit {
     var user = this.users.filter(u => u.id == userId);
     return user[0]['username'];
     }
+  }
+
+  changeCountry() {
+    this.fetch.getShopsForCountry(this.selectedCountry).subscribe(res => {
+      this.shops = res;
+      this.dataSource.data = this.shops;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
   ngOnInit(): void {

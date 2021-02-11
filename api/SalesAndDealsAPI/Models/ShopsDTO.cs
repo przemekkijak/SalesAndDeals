@@ -21,6 +21,8 @@ namespace SalesAndDealsAPI.Models
         public DateTime? LastChanged { get; set; }
         public int UsingProxy { get; set; }
         public Tag Tag { get; set; }
+        public int ActiveOffers { get; set; }
+        public int Rank { get; set; }
 
         public ShopsDTO(Shops shop)
         {
@@ -35,6 +37,7 @@ namespace SalesAndDealsAPI.Models
             this.LastModifiedByName = shop.LastModifiedByName;
             this.UsingProxy = shop.UsingProxy;
             this.LastChanged = shop.LastChanged;
+            this.Rank = shop.Rank;
         }
 
     }

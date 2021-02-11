@@ -20,11 +20,11 @@ export class FetchService {
   }
 
   getShopsForCountry(countryId: number) {
-    return this.http.get(`/api/shops/forCountry/${countryId}`);
+    return this.http.get(`/api/scrapers/forCountry/${countryId}`);
   }
 
   getResultsForShop(shopId: number) {
-    return this.http.get(`/api/results/forShop/${shopId}`);
+    return this.http.get(`/api/scrapers/forShop/${shopId}`);
   }
 
   // notes
