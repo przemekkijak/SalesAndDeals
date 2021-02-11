@@ -3,7 +3,10 @@
         <table mat-table [dataSource]="successDataSource" matSort>
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let success">{{success.name}}</td>
+                <td mat-cell *matCellDef="let success">
+                    {{success.name}}
+                    <span *ngIf="success.tag" class="tag" [style.color]="success.tag.color" matTooltip="{{success.tag.description}}">{{success.tag.name}}</span>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="lastExecuted">
@@ -34,7 +37,10 @@
         <table mat-table [dataSource]="cantDataSource" matSort>
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let cant">{{cant.name}}</td>
+                <td mat-cell *matCellDef="let cant">
+                    {{cant.name}}
+                    <span *ngIf="cant.tag" class="tag" [style.color]="cant.tag.color" matTooltip="{{cant.tag.description}}">{{cant.tag.name}}</span>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="lastExecuted">
