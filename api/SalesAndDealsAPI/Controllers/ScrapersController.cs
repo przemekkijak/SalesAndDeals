@@ -128,6 +128,31 @@ namespace SalesAndDealsAPI.Controllers
         {
             return await _context.Tags.ToListAsync();
         }
+        
+        [HttpPut("tag/{shopId}/{tagName}")]
+        public async Task<IActionResult> SetTagForShop(int shopId, string tagName)
+        {
+            var updatedShop = new Shops()
+            {
+                ShopId = shopId,
+                Tag = tagName
+            };
+            _context.Entry(updatedShop).Property("Tag").IsModified = true;
+            try
+            {
+                await _context.SaveChangesAsync();
+            } catch (DbUpdateConcurrencyException)
+            {
+                if(!ShopsExists(shopId))
+                {
+                    return NotFound();
+                } else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+        }
 
 
         //shops view endpoints

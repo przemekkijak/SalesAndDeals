@@ -3,7 +3,7 @@
         <mat-tab label="Use existing tag">
           <div class="content">
             <mat-chip-list>
-              <mat-chip class="tag" *ngFor="let tag of tags" [style.backgroundColor]="tag.color" matTooltip="{{tag.description}}">{{tag.name}}</mat-chip>
+              <mat-chip (click)="setTag(tag.name)"class="tag" *ngFor="let tag of tags" [style.backgroundColor]="tag.color" matTooltip="{{tag.description}}">{{tag.name}}</mat-chip>
             </mat-chip-list>            
           </div>
         </mat-tab>

@@ -62,5 +62,8 @@ export class FetchService {
   getTags() {
     return this.http.get<Tag[]>('/api/scrapers/tags');
   }
+  setTag(shopId: number, tagName: string) {
+    return this.http.put(`/api/scrapers/tag/${shopId}/${tagName}`, {});
+  }
 
 }
