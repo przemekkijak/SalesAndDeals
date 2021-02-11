@@ -35,11 +35,11 @@ namespace SalesAndDealsAPI.Controllers
             foreach(Shops shop in shops)
             {
                 string countryCode = (string)await _context.Countries.Where(c => c.CountryId.Equals(shop.CountryId)).Select(s => s.CountryCode).FirstOrDefaultAsync();
-                ProblemTag problemTag = await _context.Problemtags.Where(t => t.Name.Equals(shop.ProblemTag)).FirstOrDefaultAsync();
+                Tag tag = await _context.Tags.Where(t => t.Name.Equals(shop.Tag)).FirstOrDefaultAsync();
                 ShopsDTO resultDTO = new ShopsDTO(shop)
                 {
                     Name = $"{countryCode}/{shop.Name}",
-                    ProblemTag = problemTag
+                    Tag = tag
                 };
                 result.Add(resultDTO);
             }

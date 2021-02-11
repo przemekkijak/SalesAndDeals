@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SalesAndDealsAPI.Models
 {
-    public class ProblemTag
+    public class Tag
     {
         [Key]
         public string Name { get; set;}
         public string Description { get; set; }
         public string Color { get; set; }
+        public int CanWork { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace SalesAndDealsAPI.Models
         public DbSet<Country> Countries { get; set; }
         public DbSet<Result> Results { get; set; }
         public DbSet<ShopNotes> ShopNotes { get; set; }
-        public DbSet<ProblemTag> Problemtags { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
     }
 

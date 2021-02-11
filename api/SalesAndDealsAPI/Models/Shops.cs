@@ -26,7 +26,7 @@ namespace SalesAndDealsAPI.Models
         public string LastModifiedByName { get; set; }
         public DateTime? LastChanged { get; set; }
         public int UsingProxy { get; set; }
-        public string ProblemTag { get; set; }
+        public string Tag { get; set; }
     }
 
 }

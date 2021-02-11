@@ -20,7 +20,7 @@ namespace SalesAndDealsAPI.Models
         public string LastModifiedByName { get; set; }
         public DateTime? LastChanged { get; set; }
         public int UsingProxy { get; set; }
-        public ProblemTag ProblemTag { get; set; }
+        public Tag Tag { get; set; }
 
         public ShopsDTO(Shops shop)
         {
