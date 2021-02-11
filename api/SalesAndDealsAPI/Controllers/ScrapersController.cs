@@ -21,7 +21,7 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         [HttpGet("{userId}/{state}")]
-        public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetScrapersForUser(int userId, string state)
+        public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetScraper(int userId, string state)
         {
             List<Shops> shops = new List<Shops>();
             if(userId != 0)
@@ -35,9 +35,11 @@ namespace SalesAndDealsAPI.Controllers
             foreach(Shops shop in shops)
             {
                 string countryCode = (string)await _context.Countries.Where(c => c.CountryId.Equals(shop.CountryId)).Select(s => s.CountryCode).FirstOrDefaultAsync();
+                ProblemTag problemTag = await _context.Problemtags.Where(t => t.Name.Equals(shop.ProblemTag)).FirstOrDefaultAsync();
                 ShopsDTO resultDTO = new ShopsDTO(shop)
                 {
-                    Name = $"{countryCode}/{shop.Name}"
+                    Name = $"{countryCode}/{shop.Name}",
+                    ProblemTag = problemTag
                 };
                 result.Add(resultDTO);
             }
