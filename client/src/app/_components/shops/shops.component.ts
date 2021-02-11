@@ -4,9 +4,9 @@ import {MatPaginator} from '@angular/material/paginator';
 import {FetchService} from '../../_services/fetch.service';
 import { ViewChild } from '@angular/core';
 import {MatSort} from '@angular/material/sort'; 
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {ShopNotesComponent} from '../shop-notes/shop-notes.component';
+import {MatDialog} from '@angular/material/dialog';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { Country, Shop } from 'src/app/_helpers/interfaces';
 
 
 
@@ -18,8 +18,8 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 export class ShopsComponent implements OnInit {
   displayedColumns: string[] = ['rank','name','category','lastExecuted','activeOffers','actions'];
-  countries: any = [];
-  shops: any = [];
+  countries: Country[];
+  shops: Shop[];
   dataSource = new MatTableDataSource<any>();
   selectedCountry: number = 0;
   users = this.tokenStorage.getUsers();

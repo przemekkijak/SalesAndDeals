@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Note} from '../_models/note';
+import { Country, Shop, Tag } from '../_helpers/interfaces';
 
 
 @Injectable({
@@ -16,11 +17,11 @@ export class FetchService {
   }
 
   getCountries() {
-    return this.http.get('/api/countries');
+    return this.http.get<Country[]>('/api/countries');
   }
 
   getShopsForCountry(countryId: number) {
-    return this.http.get(`/api/scrapers/forCountry/${countryId}`);
+    return this.http.get<Shop[]>(`/api/scrapers/forCountry/${countryId}`);
   }
 
   getResultsForShop(shopId: number) {
@@ -57,6 +58,9 @@ export class FetchService {
   }
   changeState(shopId: number, state: string, modifiedByName: string) {
     return this.http.put(`/api/scrapers/changeState/${shopId}/${state}/${modifiedByName}`, {});
+  }
+  getTags() {
+    return this.http.get<Tag[]>('/api/scrapers/tags');
   }
 
 }

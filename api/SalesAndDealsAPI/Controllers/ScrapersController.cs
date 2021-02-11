@@ -122,6 +122,13 @@ namespace SalesAndDealsAPI.Controllers
             return Ok();
         }
 
+        //tags for scrapers
+        [HttpGet("tags")]
+        public async Task<ActionResult<IEnumerable<Tag>>> GetTags()
+        {
+            return await _context.Tags.ToListAsync();
+        }
+
 
         //shops view endpoints
 

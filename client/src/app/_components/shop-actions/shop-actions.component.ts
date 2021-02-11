@@ -5,6 +5,9 @@ import {MatMenuItem} from '@angular/material/menu';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ShopNotesComponent } from '../shop-notes/shop-notes.component';
+import { CreateTagComponent } from './create-tag/create-tag.component';
+import { ShopActionsData } from 'src/app/_helpers/interfaces';
+
 
 enum State {
   Executed = "EXECUTED",
@@ -17,15 +20,6 @@ enum State {
   Hard = "HARD"
 }
 
-export interface DataModel {
-  assignedTo: number;
-  shopId: number;
-  robotState: string;
-  inputUrl: string;
-  dexiRobot: string;
-  dexiRun: string;
-  usingProxy: boolean;
-}
 
 @Component({
   selector: 'app-shop-actions',
@@ -37,7 +31,7 @@ export class ShopActionsComponent implements OnInit {
 
   constructor(private tokenStorage: TokenStorageService, private fetch: FetchService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
-  @Input() data: DataModel;
+  @Input() data: ShopActionsData;
   @Input() parent: string;
   ScraperState = State;
 
@@ -46,8 +40,11 @@ export class ShopActionsComponent implements OnInit {
 
 
   openNotes() {
-    this.dialog.open(ShopNotesComponent, {data: {shopId: this.data.shopId},
-    });
+    this.dialog.open(ShopNotesComponent, {data: {shopId: this.data.shopId}});
+  }
+
+  addTag() {
+    this.dialog.open(CreateTagComponent, {data: {shopId: this.data.shopId}});
   }
 
   assignToUser(user: MatMenuItem) {

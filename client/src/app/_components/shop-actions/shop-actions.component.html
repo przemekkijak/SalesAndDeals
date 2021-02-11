@@ -30,4 +30,5 @@
         <button (click)="markScraperAs(ScraperState.Nooffer)" *ngIf="(data.robotState != ScraperState.Nooffer) && data.assignedTo == 0 || data.assignedTo == user.id" mat-menu-item>No offer</button>
         <button (click)="markScraperAs(ScraperState.Stillnooffer)" *ngIf="data.robotState == ScraperState.Nooffer" mat-menu-item>Still no offer</button>
         <button (click)="markScraperAs(ScraperState.Hard)" *ngIf="user.role == 'admin'" mat-menu-item>Hard case</button>
+        <button (click)="addTag()" mat-menu-item>Add tag</button>
 </mat-menu>

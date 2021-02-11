@@ -24,6 +24,7 @@ import { WaitExecutionScrapersComponent } from './_components/scrapers/my-scrape
 import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/success-scrapers/success-scrapers.component';
 import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component'; 
 import { HardCasesComponent } from './_components/scrapers/hard-cases/hard-cases.component'; 
+import { CreateTagComponent } from './_components/shop-actions/create-tag/create-tag.component';
 
 
 // helpers
@@ -49,6 +50,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import { MatTooltipModule} from '@angular/material/tooltip';
+import {MatChipsModule} from '@angular/material/chips'; 
 
 
 
@@ -72,7 +74,8 @@ import { MatTooltipModule} from '@angular/material/tooltip';
     SuccessScrapersComponent,
     ShopActionsComponent,
     ScrapersAdminComponent,
-    HardCasesComponent
+    HardCasesComponent,
+    CreateTagComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { MatTooltipModule} from '@angular/material/tooltip';
     MatTabsModule,
     MatSnackBarModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent]
