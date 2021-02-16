@@ -25,6 +25,7 @@ import { SuccessScrapersComponent } from './_components/scrapers/my-scrapers/suc
 import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/scrapers-admin.component'; 
 import { HardCasesComponent } from './_components/scrapers/hard-cases/hard-cases.component'; 
 import { CreateTagComponent } from './_components/shop-actions/create-tag/create-tag.component';
+import { TaggedScrapersComponent } from './_components/scrapers/tagged-scrapers/tagged-scrapers.component'; 
 
 
 // helpers
@@ -50,7 +51,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatIconModule} from '@angular/material/icon'; 
 import { MatTooltipModule} from '@angular/material/tooltip';
-import {MatChipsModule} from '@angular/material/chips'; 
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -75,7 +76,8 @@ import {MatChipsModule} from '@angular/material/chips';
     ShopActionsComponent,
     ScrapersAdminComponent,
     HardCasesComponent,
-    CreateTagComponent
+    CreateTagComponent,
+    TaggedScrapersComponent
   ],
   imports: [
     BrowserModule,

@@ -23,7 +23,6 @@ export class HardCasesComponent implements OnInit {
       this.scrapers = res;
       this.scrapers.sort((a,b) => a.lastExecuted.localeCompare(b.lastExecuted)).reverse();
       this.dataSource = this.scrapers;
-      console.log(this.scrapers);
     })
   }
 }
