@@ -14,7 +14,6 @@ import { ShopsComponent } from './_components/shops/shops.component';
 import { HomeComponent } from './_components/home/home.component';
 import { ShopNotesComponent } from './_components/shop-notes/shop-notes.component';
 import { NotesComponent } from './_components/notes/notes.component'; 
-import {ScrapersComponent} from './_components/scrapers/scrapers.component';
 import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component'; 
 import {FailingsComponent} from './_components/scrapers/failings/failings.component';
 import {NoofferComponent} from './_components/scrapers/nooffer/nooffer.component';
@@ -66,7 +65,6 @@ import {MatChipsModule} from '@angular/material/chips';
     ShopsComponent,
     ShopNotesComponent,
     NotesComponent,
-    ScrapersComponent,
     MyScrapersComponent,
     FailingsComponent,
     NoofferComponent,

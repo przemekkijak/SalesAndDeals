@@ -9,7 +9,7 @@ import { WaitExecutionScrapersComponent } from 'src/app/_components/scrapers/my-
 import { NoofferComponent } from 'src/app/_components/scrapers/nooffer/nooffer.component';
 import { ScrapersAdminComponent } from 'src/app/_components/scrapers/scrapers-admin/scrapers-admin.component';
 import { AuthGuard } from 'src/app/_helpers/auth.guard';
-import { ScrapersComponent } from './scrapers.component';
+import { ScrapersComponent } from 'src/app/_components/scrapers/scrapers.component';
 
 
 const routes: Routes = [

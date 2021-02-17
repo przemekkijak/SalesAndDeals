@@ -17,7 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
 
 import { ScrapersRoutingModule } from './scrapers-routing.module';
-import { ScrapersComponent } from './scrapers.component';
+import { ScrapersComponent } from 'src/app/_components/scrapers/scrapers.component';
 
 
 @NgModule({
