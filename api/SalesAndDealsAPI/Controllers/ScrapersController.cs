@@ -42,7 +42,7 @@ namespace SalesAndDealsAPI.Controllers
             {
                 string countryCode = (string)await _context.Countries.Where(c => c.CountryId.Equals(shop.CountryId)).Select(s => s.CountryCode).FirstOrDefaultAsync();
                 Tag tag = await _context.Tags.Where(t => t.Name.Equals(shop.Tag)).FirstOrDefaultAsync();
-                ShopNotes lastNote = await _context.ShopNotes.Where(n => n.ShopId.Equals(shop.ShopId)).FirstOrDefaultAsync();
+                ShopNotes lastNote = await _context.ShopNotes.Where(n => n.ShopId.Equals(shop.ShopId)).OrderByDescending(n => n.CreatedAt).FirstOrDefaultAsync();
 
                 ShopsDTO resultDTO = new ShopsDTO(shop)
                 {
