@@ -1,0 +1,16 @@
+<div class="container">
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link 
+      *ngIf="user.role == 'admin'"
+      (click)="activeLink = admin.route"
+      [active]="activeLink == admin.route"
+      [routerLink]="admin.route">Admin</a>
+  
+      <a mat-tab-link 
+      *ngFor="let link of links" 
+      (click)="activeLink = link.route"
+      [active]="activeLink == link.route"
+      [routerLink]="link.route">{{link.name}}</a>
+      </nav>
+      <router-outlet></router-outlet>
+  </div>

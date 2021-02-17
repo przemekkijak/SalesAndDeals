@@ -105,6 +105,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatChipsModule
   ],
   providers: [authInterceptorsProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [MatTabsModule]
 })
 export class AppModule { }
