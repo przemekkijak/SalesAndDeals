@@ -12,7 +12,7 @@ namespace SalesAndDealsAPI.Models
         public int ShopId { get; set; }
         public string Shop { get; set; }
         public string Author { get; set; }
-        public string Contents { get; set; }
+        public string Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public string RobotState { get; set; }
         public int AssignedTo { get; set; }
@@ -22,7 +22,7 @@ namespace SalesAndDealsAPI.Models
             this.Id = note.Id;
             this.ShopId = note.ShopId;
             this.Author = note.Author;
-            this.Contents = note.Contents;
+            this.Content = note.Content;
             this.CreatedAt = note.CreatedAt;
         }
     }

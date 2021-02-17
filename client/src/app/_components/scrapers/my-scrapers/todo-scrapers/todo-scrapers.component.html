@@ -16,6 +16,16 @@
                 </td>
             </ng-container>
 
+            <ng-container matColumnDef="lastNote">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Last note</th>
+                <td mat-cell *matCellDef="let scrapers" >
+                    <ng-container *ngIf="scrapers.lastNote">
+                        <span class="date">[{{scrapers.lastNote.createdAt | date: 'dd MMM HH:mm'}} - {{scrapers.lastNote.author}}]</span>
+                        <span class="content"> {{scrapers.lastNote.content | slice:0:80}}...</span>
+                    </ng-container>
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef>Actions</th>
                 <td mat-cell *matCellDef="let scrapers">

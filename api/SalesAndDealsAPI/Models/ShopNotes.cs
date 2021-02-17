@@ -14,6 +14,6 @@ namespace SalesAndDealsAPI.Models
         public int ShopId { get; set; }
         public string Author { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string Contents { get; set; }
+        public string Content { get; set; }
     }
 }

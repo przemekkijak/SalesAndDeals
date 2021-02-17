@@ -3,7 +3,6 @@
  table {
     width: 100%;
     th {
-        width: 33%;
     }
     td {
         .green{
@@ -17,6 +16,15 @@
             padding-left: 2%;
             font-size: 0.8rem;
             opacity: 0.6;
+        }
+        .date {
+            font-size: 0.7rem;
+        }
+        .author {
+            font-size: 0.8rem;
+        }
+        .content {
+            font-size: 0.8rem;
         }
     }
 }

@@ -11,7 +11,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
   styleUrls: ['./todo-scrapers.component.scss']
 })
 export class TodoScrapersComponent implements OnInit {
-  displayedColumns: string[] = ['name','lastExecuted','actions'];
+  displayedColumns: string[] = ['name','lastExecuted','lastNote','actions'];
   scrapers: any = [];
   dataSource = new MatTableDataSource<any>();
 
@@ -24,6 +24,7 @@ export class TodoScrapersComponent implements OnInit {
       this.scrapers = res;
       this.scrapers.sort((a,b) => a.name.localeCompare(b.name));
       this.dataSource = this.scrapers;
+      console.log(this.scrapers);
     })
   }
 }
