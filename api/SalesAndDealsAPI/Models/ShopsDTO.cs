@@ -21,6 +21,7 @@ namespace SalesAndDealsAPI.Models
         public DateTime? LastChanged { get; set; }
         public int UsingProxy { get; set; }
         public Tag Tag { get; set; }
+        public ShopNotes LastNote { get; set; }
         public int ActiveOffers { get; set; }
         public int Rank { get; set; }
 

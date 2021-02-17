@@ -15,6 +15,5 @@ namespace SalesAndDealsAPI.Models
         public string Author { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Contents { get; set; }
-        public string ReadedBy { get; set; }
     }
 }

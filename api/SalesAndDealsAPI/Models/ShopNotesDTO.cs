@@ -14,7 +14,6 @@ namespace SalesAndDealsAPI.Models
         public string Author { get; set; }
         public string Contents { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string ReadedBy { get; set; }
         public string RobotState { get; set; }
         public int AssignedTo { get; set; }
 
@@ -25,7 +24,6 @@ namespace SalesAndDealsAPI.Models
             this.Author = note.Author;
             this.Contents = note.Contents;
             this.CreatedAt = note.CreatedAt;
-            this.ReadedBy = note.ReadedBy;
         }
     }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
     {path: 'hard', component: HardCasesComponent},
     {path: 'admin', component: ScrapersAdminComponent},
     {path: 'myscrapers', component: MyScrapersComponent, children: [
-      {path: 'todo', component: MyScrapersComponent},
+      {path: 'todo', component: TodoScrapersComponent},
       {path: 'executed', component: WaitExecutionScrapersComponent},
       {path: 'success', component: SuccessScrapersComponent},
       {path: '', component: TodoScrapersComponent}
