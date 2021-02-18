@@ -36,20 +36,6 @@ namespace SalesAndDealsAPI.Controllers
             return usersDTO;
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
-        }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {

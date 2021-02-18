@@ -10,18 +10,14 @@ namespace SalesAndDealsAPI.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string Role { get; set; }
-        public UserDTO(int id, string username, string role)
-        {
-            this.Id = id;
-            this.Username = username;
-            this.Role = role;
-        }
+        public DateTime? LastLogged { get; set; }
 
         public UserDTO(User user)
         {
             this.Id = user.Id;
             this.Username = user.Username;
             this.Role = user.Role;
+            this.LastLogged = user.LastLogged;
         }
     }
 

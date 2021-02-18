@@ -47,6 +47,16 @@ namespace SalesAndDealsAPI.Controllers
                     var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                     var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddDays(1), signingCredentials: signIn);
 
+                    user.LastLogged = DateTime.Now;
+                    _context.Entry(user).Property("LastLogged").IsModified = true;
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                    } catch(DbUpdateConcurrencyException)
+                    {
+                        throw;
+                    }
+
                     return Ok(new LoginResult(user.Id, user.Username, user.Role, new JwtSecurityTokenHandler().WriteToken(token)));
                 } 
                 else

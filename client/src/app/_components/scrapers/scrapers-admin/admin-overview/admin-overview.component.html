@@ -1,14 +1,35 @@
 <div class="container">
-
-    <ng-container *ngFor="let user of users">
-        <div class="userTable" *ngIf="user.role == 'scraper'">
-            <mat-accordion>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>{{user.username}}</mat-panel-title>
-                    <mat-panel-description>Last logged: 2 days ago</mat-panel-description>
-                </mat-expansion-panel-header>
-            </mat-accordion>
-        </div>
-    </ng-container>
-
+    <mat-accordion multi>
+        <ng-container *ngFor="let user of users">
+            <div class="userTable" *ngIf="user.role == 'scraper'">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>{{user.username}}</mat-panel-title>
+                        <mat-panel-description>Last logged: {{user.lastLogged | date: 'dd MMM HH:mm'}}</mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <ng-container *ngFor="let scraper of scrapers">
+                        <div class="scraperContainer" *ngIf="scraper.assignedTo == user.id">
+                            <mat-card>
+                                <mat-card-subtitle>{{scraper.name}}</mat-card-subtitle>
+                                <mat-card-content>
+                                    <div class="cardContent">
+                                        <span>Assigned at: {{scraper.assignedAt | date: 'dd MMM HH:mm'}}</span>
+                                        <div>
+                                            <ng-container *ngIf="scraper.lastNote">
+                                                <span class="date">[{{scraper.lastNote.createdAt | date: 'dd MMM HH:mm'}} - {{scraper.lastNote.author}}]</span>
+                                                <span class="content"> {{scraper.lastNote.content | slice:0:80}}...</span>
+                                            </ng-container>
+                                        </div>
+                                        <div>
+                                            <app-shop-actions [data]="scraper" parent="scrapers"></app-shop-actions>
+                                        </div>
+                                    </div>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </ng-container>
+                </mat-expansion-panel>
+            </div>
+        </ng-container>
+    </mat-accordion>
 </div>

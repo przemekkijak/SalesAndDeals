@@ -34,7 +34,7 @@ namespace SalesAndDealsAPI.Controllers
             {
                 //get scrapers for specific user & state
                 shops = await _context.Shops.Where(s => s.AssignedTo.Equals(userId) && s.RobotState.Equals(state)).ToListAsync();
-            } else if(userId < 0)
+            } else if(userId < 0 && state == "all")
             {
                 //get scrapers assigned to any user (for admin panel purposes)
                 shops = await _context.Shops.Where(s => s.AssignedTo > 0).ToListAsync();

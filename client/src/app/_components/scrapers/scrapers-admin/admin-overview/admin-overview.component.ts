@@ -14,13 +14,20 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class AdminOverviewComponent implements OnInit {
 
   scrapers: any = [];
-  users: any = this.tokenStorage.getUsers();
+  users: any = [];
+
+
 
   @ViewChild(MatAccordion) accordion: MatAccordion;
   constructor(private fetch: FetchService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    console.log(this.users);
+    this.fetch.getScrapers(-1, "all").subscribe((res) => {
+      this.scrapers = res;
+    })
+    this.fetch.getUsers().subscribe((res) => {
+      this.users = res;
+    })
   }
 
 }
