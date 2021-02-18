@@ -25,7 +25,6 @@ export class AdminMainComponent implements OnInit {
       this.success = res;
       this.success.sort((a,b) => a.name.localeCompare(b.name));
       this.successDataSource = this.success;
-      console.log(this.success);
     })
     this.fetch.getScrapers(0, "CANTDOTHIS").subscribe(res => {
       this.cant = res;

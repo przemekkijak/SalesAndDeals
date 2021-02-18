@@ -14,7 +14,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatInputModule} from '@angular/material/input'; 
-import {MatButtonModule} from '@angular/material/button'; 
+import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion'; 
+
 
 import { ScrapersRoutingModule } from './scrapers-routing.module';
 import { ScrapersComponent } from 'src/app/_components/scrapers/scrapers.component';
@@ -39,7 +41,8 @@ import { ScrapersComponent } from 'src/app/_components/scrapers/scrapers.compone
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule
   ]
 })
 export class ScrapersModule { }

@@ -24,7 +24,6 @@ export class TodoScrapersComponent implements OnInit {
       this.scrapers = res;
       this.scrapers.sort((a,b) => a.name.localeCompare(b.name));
       this.dataSource = this.scrapers;
-      console.log(this.scrapers);
     })
   }
 }

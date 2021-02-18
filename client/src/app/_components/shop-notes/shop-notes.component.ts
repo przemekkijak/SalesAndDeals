@@ -35,13 +35,6 @@ export class ShopNotesComponent implements OnInit {
   }
 
   addNote(noteContent) {
-    let ZeroPrefix = (dateField: number) => {
-      if(dateField < 10) {
-        return `0${dateField}`
-      } else {
-        return dateField;
-      }
-    }
     var now = new Date();
     now.setHours(now.getHours()+1)
 

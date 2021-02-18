@@ -30,11 +30,17 @@ namespace SalesAndDealsAPI.Controllers
         public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetScrapers(int userId, string state)
         {
             List<Shops> shops = new List<Shops>();
-            if(userId != 0)
+            if(userId > 0)
             {
+                //get scrapers for specific user & state
                 shops = await _context.Shops.Where(s => s.AssignedTo.Equals(userId) && s.RobotState.Equals(state)).ToListAsync();
-            } else
+            } else if(userId < 0)
             {
+                //get scrapers assigned to any user (for admin panel purposes)
+                shops = await _context.Shops.Where(s => s.AssignedTo > 0).ToListAsync();
+            } else if(userId == 0)
+            {
+                //get all scrapers for with specific state
                 shops = await _context.Shops.Where(s => s.RobotState.Equals(state)).ToListAsync();
             }
             List<ShopsDTO> result = new List<ShopsDTO>();

@@ -25,6 +25,8 @@ import { ScrapersAdminComponent } from './_components/scrapers/scrapers-admin/sc
 import { HardCasesComponent } from './_components/scrapers/hard-cases/hard-cases.component'; 
 import { CreateTagComponent } from './_components/shop-actions/create-tag/create-tag.component';
 import { TaggedScrapersComponent } from './_components/scrapers/tagged-scrapers/tagged-scrapers.component'; 
+import { AdminMainComponent } from './_components/scrapers/scrapers-admin/admin-main/admin-main.component';
+import { AdminOverviewComponent } from './_components/scrapers/scrapers-admin/admin-overview/admin-overview.component';
 
 
 // helpers
@@ -51,9 +53,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon'; 
 import { MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
-import { AdminMainComponent } from './_components/scrapers/scrapers-admin/admin-main/admin-main.component';
-import { AdminOverviewComponent } from './_components/scrapers/scrapers-admin/admin-overview/admin-overview.component';
-
+import {MatExpansionModule} from '@angular/material/expansion'; 
 
 
 
@@ -104,10 +104,10 @@ import { AdminOverviewComponent } from './_components/scrapers/scrapers-admin/ad
     MatSnackBarModule,
     MatIconModule,
     MatTooltipModule,
-    MatChipsModule
+    MatChipsModule,
+    MatExpansionModule
   ],
   providers: [authInterceptorsProviders],
   bootstrap: [AppComponent],
-  exports: [MatTabsModule]
 })
 export class AppModule { }
