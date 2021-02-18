@@ -1,36 +1,3 @@
 .container {
-    padding: 5%;   
-    display: grid;
-    grid-template-columns: 50% 50%;
-    table {
-        width: 95%;
-       td {
-           .green{
-               color: green;
-           }
-           .red{
-               color: rgb(160, 18, 18);
-           }
-           .tag {
-            cursor: pointer;
-            padding-left: 2%;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-       }
-   }
-   .success {
-        table {
-            th {
-                background-color: rgb(131, 170, 115);
-        }
-    }
-   }
-   .cant {
-        table {
-            th {
-                background-color: rgb(226, 226, 169);
-        }
-    }
-    }
+    padding-top: 1.5%;
 }
