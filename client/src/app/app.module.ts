@@ -51,6 +51,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatIconModule} from '@angular/material/icon'; 
 import { MatTooltipModule} from '@angular/material/tooltip';
 import {MatChipsModule} from '@angular/material/chips';
+import { AdminMainComponent } from './_components/scrapers/scrapers-admin/admin-main/admin-main.component';
+import { AdminOverviewComponent } from './_components/scrapers/scrapers-admin/admin-overview/admin-overview.component';
 
 
 
@@ -75,7 +77,9 @@ import {MatChipsModule} from '@angular/material/chips';
     ScrapersAdminComponent,
     HardCasesComponent,
     CreateTagComponent,
-    TaggedScrapersComponent
+    TaggedScrapersComponent,
+    AdminMainComponent,
+    AdminOverviewComponent
   ],
   imports: [
     BrowserModule,

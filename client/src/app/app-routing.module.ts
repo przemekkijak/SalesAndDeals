@@ -4,7 +4,6 @@ import { NotesComponent } from './_components/notes/notes.component';
 import { LoginComponent } from './_components/login/login.component';
 import { ShopsComponent } from './_components/shops/shops.component';
 import {AuthGuard} from './_helpers/auth.guard';
-import { MyScrapersComponent } from './_components/scrapers/my-scrapers/my-scrapers.component';
 
 
 const routes: Routes = [

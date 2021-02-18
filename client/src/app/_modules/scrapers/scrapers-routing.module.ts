@@ -10,6 +10,8 @@ import { NoofferComponent } from 'src/app/_components/scrapers/nooffer/nooffer.c
 import { ScrapersAdminComponent } from 'src/app/_components/scrapers/scrapers-admin/scrapers-admin.component';
 import { AuthGuard } from 'src/app/_helpers/auth.guard';
 import { ScrapersComponent } from 'src/app/_components/scrapers/scrapers.component';
+import { AdminMainComponent } from 'src/app/_components/scrapers/scrapers-admin/admin-main/admin-main.component';
+import { AdminOverviewComponent } from 'src/app/_components/scrapers/scrapers-admin/admin-overview/admin-overview.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,11 @@ const routes: Routes = [
     {path: 'failings', component: FailingsComponent},
     {path: 'nooffer', component: NoofferComponent},
     {path: 'hard', component: HardCasesComponent},
-    {path: 'admin', component: ScrapersAdminComponent},
+    {path: 'admin', component: ScrapersAdminComponent, children: [
+      {path: 'main', component: AdminMainComponent},
+      {path: 'overview', component: AdminOverviewComponent},
+      {path: '', component: AdminMainComponent}
+    ]},
     {path: 'myscrapers', component: MyScrapersComponent, children: [
       {path: 'todo', component: TodoScrapersComponent},
       {path: 'executed', component: WaitExecutionScrapersComponent},
