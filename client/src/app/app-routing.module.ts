@@ -19,8 +19,7 @@ const routes: Routes = [
   component: NotesComponent, 
   canActivate: [AuthGuard]},
 
-
-
+  {path: '**', component: LoginComponent},
   {path: 'login', component: LoginComponent},
 ];
 

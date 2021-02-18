@@ -17,6 +17,7 @@ namespace SalesAndDealsAPI.Models
         public DateTime? LastExecuted { get; set; }
         public string ExecutionState { get; set; }
         public int AssignedTo { get; set; }
+        public DateTime? AssignedAt { get; set; }
         public string DexiRun { get; set; }
         public string DexiRobot { get; set; }
         public int Rank { get; set; }

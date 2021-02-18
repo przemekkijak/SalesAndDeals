@@ -16,6 +16,7 @@ namespace SalesAndDealsAPI.Models
         public string DexiRobot { get; set; }
         public string InputUrl { get; set; }
         public int AssignedTo { get; set; }
+        public DateTime? AssignedAt { get; set; }
         public string RobotState { get; set; }
         public string LastModifiedByName { get; set; }
         public DateTime? LastChanged { get; set; }
@@ -34,6 +35,7 @@ namespace SalesAndDealsAPI.Models
             this.DexiRobot = shop.DexiRobot;
             this.InputUrl = shop.InputUrl;
             this.AssignedTo = shop.AssignedTo;
+            this.AssignedAt = shop.AssignedAt;
             this.RobotState = shop.RobotState;
             this.LastModifiedByName = shop.LastModifiedByName;
             this.UsingProxy = shop.UsingProxy;

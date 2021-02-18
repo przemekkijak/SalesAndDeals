@@ -13,6 +13,7 @@ using SalesAndDealsAPI.Helpers;
 
 namespace SalesAndDealsAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ScrapersController : ControllerBase
@@ -25,7 +26,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         //scrapers view endpoints
-
         [HttpGet("{userId}/{state}")]
         public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetScrapers(int userId, string state)
         {
@@ -58,31 +58,34 @@ namespace SalesAndDealsAPI.Controllers
         [HttpPut("assignTo/{userId}/{shopId}")]
         public async Task<IActionResult> AssignScraperTo(int userId, int shopId)
         {
-                var updatedShop = new Shops()
-                {
-                    AssignedTo = userId,
-                    ShopId = shopId,
-                    RobotState = "TODO"
-                };
-                _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
-                _context.Entry(updatedShop).Property("RobotState").IsModified = true;
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ShopsExists(shopId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            return Ok();
+            var updatedShop = new Shops()
+            {
+                AssignedTo = userId,
+                ShopId = shopId,
+                AssignedAt = DateTime.Now,
+                RobotState = "TODO"
+            };
+            _context.Entry(updatedShop).Property("AssignedTo").IsModified = true;
+            _context.Entry(updatedShop).Property("RobotState").IsModified = true;
+            _context.Entry(updatedShop).Property("AssignedAt").IsModified = true;
+          
+            try
+            {
+                await _context.SaveChangesAsync();
             }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ShopsExists(shopId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return Ok();
+        }
 
         [HttpPut("changeState/{shopId}/{state}/{modifiedByName}")]
         public async Task<IActionResult> ChangeScraperState(int shopId, string state, string modifiedByName)
@@ -171,8 +174,8 @@ namespace SalesAndDealsAPI.Controllers
             }
             return Ok();
         }
+        
         //shops view endpoints
-
         [HttpGet("forCountry/{id}")]
         public async Task<ActionResult<IEnumerable<ShopsDTO>>> GetShopsForCountry(int id)
         {
@@ -195,7 +198,6 @@ namespace SalesAndDealsAPI.Controllers
         }
 
         //executions from dexi
-
         [HttpPut("fetchExecutions/{shopId}")]
         public async Task<ActionResult> FetchExecutionsForShop(int shopId)
         {
