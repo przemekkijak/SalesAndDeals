@@ -1,10 +1,14 @@
 <div class="container">
 
-    <mat-accordion>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Przemek</mat-panel-title>
-            <mat-panel-description>Test</mat-panel-description>
-        </mat-expansion-panel-header>
-    </mat-accordion>
+    <ng-container *ngFor="let user of users">
+        <div class="userTable" *ngIf="user.role == 'scraper'">
+            <mat-accordion>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{user.username}}</mat-panel-title>
+                    <mat-panel-description>Last logged: 2 days ago</mat-panel-description>
+                </mat-expansion-panel-header>
+            </mat-accordion>
+        </div>
+    </ng-container>
 
 </div>
